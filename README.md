@@ -15,6 +15,7 @@ Ruby on Rails and React.js. It allows users to
 - [ ] Play songs
 - [ ] Like songs
 - [ ] View feed from followed users
+- [ ] Comment on songs
 ## Design Docs
 
 
@@ -46,6 +47,18 @@ views for the Songs `Index`, `IndexItem` and `Form`. At the end of Phase 2,
 Songs can be created and played in the browser. Lastly, while constructing 
 the views I will start using basic bootstrap for styling.
 
+### PHase 2.5: Song CRUD 2.0 and how to save song files. (2 days)
+
+Given TA input, I will expand on basic user experiences. Commenting on songs and 
+playlists come to mind. Some time within the first week I will determine and implement
+Cloudinary, Filepicker, or Paperclip to manage my song files.
+
+Instead of the many indexes I currently have set up. I can make one song Index fetch
+different songs based on particular needs via joins(on the likes/followers tables).
+
+Finally, have a segment of the landing page with a "Popular this week" with the most liked songs
+
+
 [Details][phase-two]
 
 ### Phase 3: Follow Users and Like Songs(3 days)
@@ -65,7 +78,7 @@ enjoyable experience of AwwdiIo
 
 [Details][phase-four]
 
-### Phase 5: Implementation of additional content(4 days)
+### Phase 5: Implementation of additional content(2 days)
 
 At this point in time, my clone has the bare minimum to be called a SoundCloud clone.
 For the next 4 days I will add more functionality to become more like the SoundCloud platform.
@@ -84,7 +97,6 @@ of the project deadline.
 - [ ] Album art
 - [ ] Avatars
 - [ ] Tag songs
-- [ ] Comment on songs
 - [ ] Searching by song title
 - [ ] search by tags
 - [ ] Search for users
