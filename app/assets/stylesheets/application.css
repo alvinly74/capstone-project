@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+/*.navbar {
+  background-color: grey;
+}*/
+.botbar {
+  background-color: grey;
+}
+
+.songIndex{
+  background-color: blue;
+}

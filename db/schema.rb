@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151013172956) do
   enable_extension "plpgsql"
 
   create_table "songs", force: :cascade do |t|
+    t.integer  "user_id",     null: false
     t.string   "title",       null: false
     t.string   "url",         null: false
     t.text     "description", null: false

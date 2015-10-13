@@ -1,0 +1,3 @@
+SongConstants = {
+  ALL_SONGS_RECEIVED: "ALL SONGS RECEIVED",
+}
