@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: awwdiio
+  api_key: '738342363476434'
+  api_secret: m7h3lbmZIwHg4f_9yOag2HTyOXs
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: awwdiio
+  api_key: '738342363476434'
+  api_secret: m7h3lbmZIwHg4f_9yOag2HTyOXs
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: awwdiio
+  api_key: '738342363476434'
+  api_secret: m7h3lbmZIwHg4f_9yOag2HTyOXs
+  enhance_image_tag: true
+  static_image_support: false
