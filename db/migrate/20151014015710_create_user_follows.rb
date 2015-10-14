@@ -5,6 +5,6 @@ class CreateUserFollows < ActiveRecord::Migration
       t.integer :followee_id, null:false
       t.timestamps null: false
     end
-    validates_uniqueness_of :follower_id, :scope => [:followee_id]
+      add_index(:followings, [:follower_id, :followee_id], unique: true)
   end
 end

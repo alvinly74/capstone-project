@@ -1,4 +1,4 @@
 json.extract!(
   song,
-  :title, :description, :url, :user_id
+  :id ,:title, :description, :url, :user_id
 )

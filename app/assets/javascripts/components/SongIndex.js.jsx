@@ -12,11 +12,12 @@ var SongIndex = React.createClass({
   },
 
   render:function(){
+    // debugger;
     return(
       <div className="SongIndex">
         <ul>
           {this.state.songs.map(function(song){
-            return <SongItem song={song}/>;
+            return <SongItem song={song} key={song.id} />;
         })}
         </ul>
       </div>
