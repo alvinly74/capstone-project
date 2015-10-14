@@ -1,10 +1,17 @@
 class User < ActiveRecord::Base
-  validates :username, :password_digest, :session_token, presence:true, uniqueness: true
+  validates :username, :password_digest, :session_token, presence:true
+  validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
 
   attr_reader :password
 
-  # Has many association with songs
+  has_many(
+    :uploaded_songs,
+    class_name: "Song",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
 
   after_initialize :ensure_session_token
 

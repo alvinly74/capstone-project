@@ -16,10 +16,11 @@
 /*.navbar {
   background-color: grey;
 }*/
-.botbar {
+.SongIndex{
   background-color: grey;
 }
 
-.songIndex{
-  background-color: blue;
+.SongItem{
+  background-color: darkgreen;
+  color: orange;
 }

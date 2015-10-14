@@ -14,7 +14,7 @@ ApiUtil = {
       method:'delete',
       success: function(){
 
-        // debugger;
+
       }
     });
   }
