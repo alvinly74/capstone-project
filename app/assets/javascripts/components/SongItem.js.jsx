@@ -10,6 +10,11 @@ var SongItem = React.createClass({
       alert("In order to like songs please log in.");
     }
   },
+  unlikeSong: function(){
+    if(window.CURRENT_USER_ID){
+      ApiUtil.unlikeSong(this.props.song);
+    }
+  },
   render: function(){
       return (
         <li className="SongItem">
@@ -17,8 +22,9 @@ var SongItem = React.createClass({
           <div>{this.props.song.description}</div>
           <p>submitted by: <a onClick={this.showUser}>{this.props.song.username}</a></p>
           <button onClick={this.likeSong}>Like</button>
+          <button onClick={this.unlikeSong}>Unlike</button>
           <button onClick={this.showUser}>play</button>
-          </li>
+        </li>
       )
   }
 });

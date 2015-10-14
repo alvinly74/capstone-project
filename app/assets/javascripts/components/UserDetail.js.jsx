@@ -42,8 +42,12 @@ var UserDetail = React.createClass({
       ApiUtil.unfollowUser(this.props.params.userId);
     }
   },
+
+  determineFollowButton: function(){
+    // placeholder. figure out the ternary shit
+  },
   render: function(){
-    // debugger;
+
       return(
         <div>
           <h1>{this.state.current.username}</h1>

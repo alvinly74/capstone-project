@@ -10,7 +10,12 @@ class Api::SongLikesController < ApplicationController
   end
 
   def destroy
-
+    @like = SongLike.find_by(
+                       song_id: likes_params[:song_id],
+                       user_id: likes_params[:user_id]
+                       )
+    @like.destroy
+    render json: ["Unlike Success"]
   end
 
 
