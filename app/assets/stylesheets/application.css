@@ -20,7 +20,19 @@
   background-color: grey;
 }
 
+
+
 .SongItem{
   background-color: darkgreen;
   color: orange;
+  border: 3px solid black ;
+  list-style-type: none;
+}
+
+.BotBar{
+  background-color: black;
+  color: orange;
+  position: absolute;
+  bottom: 0;
+  padding-top: 60px;
 }

@@ -3,7 +3,9 @@
   var signUp = function(){
     window.location = "/users/new";
     };
-
+  var signIn = function(){
+    window.location = "session/new";
+  };
   var logOut = function(){
     ApiUtil.LogOut();
     window.location = "session/new";
@@ -11,23 +13,35 @@
 
   var LogOutOrIn;
   var SignInOrOut;
+  var status;
+  var logOutButtons = (
+    <li><a onClick={logOut}>Log Out</a></li>
+  );
+  var SignInOrUpButtons = (
+    <div>
+      <li><a onClick={signUp}>Sign Up</a></li>
+      <li><a onClick={signIn}> Log In</a></li>
+    </div>
+  );
 
   root.NavBar = React.createClass({
+    getInitialState: function(){
+      return({ LogOutOrIn: status})
+    },
     determineLogin: function () {
       if(window.CURRENT_USER_ID){
-        LogOutOrIn = logOut;
-        SignInOrOut = "Log Out";
+        status = logOutButtons
       } else {
-        LogOutOrIn = signUp;
-        SignInOrOut = "Sign Up";
+        status = SignInOrUpButtons
       }
     },
 
     componentDidMount: function(){
+      this.determineLogin();
+      this.setState({ logOutOrIn: status})
     },
 
     render: function(){
-      this.determineLogin();
       return(
         <nav className="navbar navbar-default">
           <div className="container-fluid">
@@ -46,8 +60,8 @@
               <ul className="nav navbar-nav pull-right">
 
 
-                <li><a href="#">Upload</a></li>
-                <li><a onClick={LogOutOrIn}>{SignInOrOut}</a></li>
+                <li ><a>Upload</a></li>
+                {this.state.logOutOrIn}
               </ul>
             </div>
 

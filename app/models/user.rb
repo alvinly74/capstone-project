@@ -11,6 +11,35 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
+  has_many(
+    :liked_songs,
+    class_name: "SongLike",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+  has_many(
+    :followers_model,
+    class_name: "UserFollow",
+    foreign_key: :follower_id,
+    primary_key: :id
+  )
+  has_many(
+    :followers,
+    through: :followers_model,
+    source: :followee
+  )
+  has_many(
+    :followees_model,
+    class_name: "UserFollow",
+    foreign_key: :followee_id,
+    primary_key: :id
+  )
+  has_many(
+    :followees,
+    through: :followees_model,
+    source: :follower
+  )
+
 
 
   after_initialize :ensure_session_token

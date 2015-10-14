@@ -8,8 +8,27 @@ class Song < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
+  has_many(
+    :likers_model,
+    class_name: "SongLike",
+    foreign_key: :song_id,
+    primary_key: :id
+  )
+  has_many(
+    :likers,
+    through: :likers_model,
+    source: :liker
+  )
 
-  def self.likedSongs
+  def self.liked_songs
+    
+  end
+
+  def self.followed_songs
+
+  end
+
+  def self.uploaded_songs
 
   end
 end

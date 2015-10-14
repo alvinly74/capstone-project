@@ -2,7 +2,7 @@
   'use strict';
 
   var _songs = [];
-  var CHANGE_EVENT = "change";
+  var SONG_CHANGE = "change";
 
   var resetSongs = function(songs){
   _songs = songs.slice();
@@ -13,18 +13,18 @@
       return _songs.slice();
     },
     addChangeListener: function(callback){
-      this.on(CHANGE_EVENT, callback);
+      this.on(SONG_CHANGE, callback);
     },
 
     removeChangeListener: function(callback){
-      this.removeListener(CHANGE_EVENT, callback);
+      this.removeListener(SONG_CHANGE, callback);
     },
 
     dispatcherID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case SongConstants.ALL_SONGS_RECEIVED:
           var result = resetSongs(payload.songs);
-          SongStore.emit(CHANGE_EVENT);
+          SongStore.emit(SONG_CHANGE);
           break;
       }
     })
