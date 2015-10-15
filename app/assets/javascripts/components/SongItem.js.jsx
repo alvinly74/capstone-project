@@ -1,8 +1,5 @@
 var SongItem = React.createClass({
   mixins: [ReactRouter.History],
-  showUser: function() {
-    this.history.pushState(null, '/users/' + this.props.song.user_id, {});
-  },
   likeSong: function(){
     if(window.CURRENT_USER_ID){
       ApiUtil.likeSong(this.props.song);
@@ -23,7 +20,7 @@ var SongItem = React.createClass({
           <p>submitted by: <a onClick={this.showUser}>{this.props.song.username}</a></p>
           <button onClick={this.likeSong}>Like</button>
           <button onClick={this.unlikeSong}>Unlike</button>
-          <button onClick={this.showUser}>play</button>
+          <button>play</button>
         </li>
       )
   }

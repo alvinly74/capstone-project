@@ -21,11 +21,11 @@ class Song < ActiveRecord::Base
   )
 
   def self.liked_songs
-    
+
   end
 
   def self.followed_songs
-
+    
   end
 
   def self.uploaded_songs
