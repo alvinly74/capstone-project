@@ -1,6 +1,6 @@
 class Api::SongsController < ApplicationController
   def index
-    @songs = Song.followed_songs(current_user).includes(:user)
+    @songs = Song.followed_songs(current_user).includes(:user).includes(:likers)
   end
 
   def show

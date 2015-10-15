@@ -28,7 +28,6 @@ var BotBar = React.createClass({
   render:function(){
     return(
       <div className="BotBar">
-        This is the bottom bar!!
         <div className="AudioPlayer">
           <audio id="musicPlayer" controls src={this.state.song.url}></audio>
           <button onClick={this._play}>play</button>

@@ -72,7 +72,6 @@ table {
   left: 0;
   right: 0;
   border: 0;
-  margin: 0;
 	height: 50px;
 }
 
@@ -86,8 +85,8 @@ table {
 }
 
 .SongIndex{
-  margin-top: 50px;
-  width: 400px;
+	margin-top: 50px;
+  width: 600px;
   background-color: lightgrey;
   float:right;
   margin-bottom: 50px;
@@ -95,10 +94,6 @@ table {
 	overflow: auto;
 }
 
-.TESTINGPURPOSES{
-	overflow: auto;
-	height: 1000px;
-};
 .SongItem{
   background-color: darkgreen;
   color: orange;
@@ -113,11 +108,20 @@ table {
   background-color: darkgrey;
   color: orange;
   position: fixed;
-  height: auto;
+  height: 50px;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 100
+}
+
+.AudioPlayer{
+	margin-left: auto;
+	margin;right: auto;
+}
+
+.BotBarRight{
+	float: right;
 }
 
 .group:after{

@@ -56,6 +56,7 @@ var UserDetail = React.createClass({
   render: function(){
       return(
         <div className="userDetail group">
+          <img src={this.state.current.img_url} alt="avatar" height="200" width="200"/>
           <h1>{this.state.current.username}</h1>
           <button onClick={this.followUser}>Follow User</button>
           <button onClick={this.unfollowUser}>Unfollow User</button>
