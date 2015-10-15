@@ -8,7 +8,7 @@ var SongDetail = React.createClass({
     ApiUtil.changeWindowSong(this.props.params.songId);
   },
   componentWillReceiveProps: function(newprops){
-    this.setState({windowSong: newprops.params.songId});
+    ApiUtil.changeWindowSong(newprops.params.songId);
   },
 
   _onChange: function(){
@@ -41,7 +41,6 @@ var SongDetail = React.createClass({
             <button onClick={this.playSong}>play</button>
             <button onClick={this._pause}>pause</button>
           </div>
-
         </div>
       )
   }

@@ -36,8 +36,8 @@ var SongItem = React.createClass({
   render: function(){
       return (
         <li className="SongItem">
-          <img src={this.props.song.img_url} alt="songIcon" height="100" width="100"/>
-          <a onClick={this.showSong} userId={this.props.song.user_id}>{this.props.song.title}</a>
+          <img onClick={this.showSong} src={this.props.song.img_url} alt="songIcon" height="100" width="100"/>
+          <p userId={this.props.song.user_id}>{this.props.song.title}</p>
           {this._submitted()}
           <br/>
           <p>{this.props.song.likeCount}</p>
