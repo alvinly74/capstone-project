@@ -4,7 +4,7 @@ var SongIndex = React.createClass({
   },
 
   componentDidMount: function(){
-    SongStore.addChangeListener(this._onChange);
+    SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchAllSongs();
   },
   _onChange: function(){
@@ -15,9 +15,10 @@ var SongIndex = React.createClass({
     // debugger;
     return(
       <div className="SongIndex">
+        <h1>Songs by Folks you Followed</h1>
         <ul>
           {this.state.songs.map(function(song){
-            return <SongItem song={song} key={song.id} />;
+            return <SongItem song={song} key={song.id} submitted="true" />;
         })}
         </ul>
       </div>

@@ -7,20 +7,41 @@ var SongItem = React.createClass({
       alert("In order to like songs please log in.");
     }
   },
+
   unlikeSong: function(){
     if(window.CURRENT_USER_ID){
       ApiUtil.unlikeSong(this.props.song);
     }
   },
+
+  showUser: function(){
+    this.history.pushState(null,"users/" + this.props.song.user_id);
+  },
+
+  showSong: function(){
+    this.history.pushState(null,"songs/" + this.props.song.id);
+  },
+
+  playSong: function(){
+    window.CURRENT_PLAYING=true;
+      ApiUtil.updateCurrent(this.props.song);
+  },
+
+  _submitted: function(){
+    if(this.props.submitted){
+      return<p>submitted by:<a onClick={this.showUser}>{this.props.song.username}</a></p>;
+    }
+  },
+
   render: function(){
       return (
         <li className="SongItem">
-          <a>{this.props.song.title}</a>
-          <div>{this.props.song.description}</div>
-          <p>submitted by: <a onClick={this.showUser}>{this.props.song.username}</a></p>
+          <a onClick={this.showSong} userId={this.props.song.user_id}>{this.props.song.title}</a>
+          {this._submitted()}
+          <br/>
           <button onClick={this.likeSong}>Like</button>
           <button onClick={this.unlikeSong}>Unlike</button>
-          <button>play</button>
+          <button onClick={this.playSong}>play</button>
         </li>
       )
   }

@@ -7,7 +7,7 @@
   var App = React.createClass({
     render: function(){
       return (
-        <div>
+        <div className="Wandow group">
           <NavBar/>
           <SongIndex/>
           {this.props.children}
@@ -18,7 +18,9 @@
   });
   var routes = (
     <Route path="/" component={App}>
-      <Route path="/users/:userId" component={UserDetail}></Route>
+      <IndexRoute component={HomePage}/>
+      <Route path="songs/:songId" component={SongDetail}></Route>
+      <Route path="users/:userId" component={UserDetail}></Route>
     </Route>
   );
     React.render(<Router>{routes}</Router>, root);

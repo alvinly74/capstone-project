@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014015710) do
+ActiveRecord::Schema.define(version: 20151015182305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,13 @@ ActiveRecord::Schema.define(version: 20151014015710) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.string   "title",       null: false
-    t.string   "url",         null: false
-    t.text     "description", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "user_id",                                                                                                                    null: false
+    t.string   "title",                                                                                                                      null: false
+    t.string   "url",                                                                                                                        null: false
+    t.text     "description",                                                                                                                null: false
+    t.datetime "created_at",                                                                                                                 null: false
+    t.datetime "updated_at",                                                                                                                 null: false
+    t.text     "img_url",     default: "http://res.cloudinary.com/awwdiio/image/upload/c_scale,w_200/v1444932715/archer_500x500_zrhro1.jpg"
   end
 
   create_table "user_follows", force: :cascade do |t|
@@ -40,11 +41,12 @@ ActiveRecord::Schema.define(version: 20151014015710) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "username",                                                                                                               null: false
+    t.string   "password_digest",                                                                                                        null: false
+    t.string   "session_token",                                                                                                          null: false
+    t.datetime "created_at",                                                                                                             null: false
+    t.datetime "updated_at",                                                                                                             null: false
+    t.text     "img_url",         default: "http://res.cloudinary.com/awwdiio/image/upload/v1444932880/bobs_burgers_500x500_tr3ykn.gif"
   end
 
 end

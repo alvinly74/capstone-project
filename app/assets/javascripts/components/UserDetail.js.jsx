@@ -10,7 +10,6 @@ var UserDetail = React.createClass({
     this.setState({current: UserStore.find(newProps.params.userId),
                    followed: this._isFollowed()
                  });
-    debugger;
   },
   _isFollowed:function(){
     var followed = false;
@@ -46,17 +45,24 @@ var UserDetail = React.createClass({
   determineFollowButton: function(){
     // placeholder. figure out the ternary shit
   },
-  render: function(){
 
+  _songs: function(){
+    if (this.state.current.uploaded_songs){
+      return this.state.current.uploaded_songs.map(function(song){
+        return <SongItem song={song} key={song.id}/>;
+      })
+    }
+  },
+  render: function(){
       return(
-        <div>
+        <div className="userDetail group">
           <h1>{this.state.current.username}</h1>
           <button onClick={this.followUser}>Follow User</button>
           <button onClick={this.unfollowUser}>Unfollow User</button>
-
           <div>
             <h3>Uploaded Songs</h3>
-            <ul>Uploaded songs go here
+            <ul id="UploadedSongs">
+            {this._songs()}
             </ul>
           </div>
         </div>

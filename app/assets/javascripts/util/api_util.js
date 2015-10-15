@@ -8,9 +8,19 @@ ApiUtil = {
       }
     });
   },
+  changeWindowSong: function(songId){
+    $.ajax({
+      url: "api/songs/"+ songId,
+      method: 'get',
+      data:{id:songId},
+      success: function(song){
+        ApiActions.changeWindowSong(song);
+      }
+    });
+  },
   fetchFollowedSongs:function(userID){
     $.ajax({
-      url:"api/Songs",
+      url:"api/songs",
       method:"get",
       success:function(songs){
         ApiActions.receiveFollowedSongs(songs);
@@ -63,6 +73,9 @@ ApiUtil = {
         }
       }
     });
+  },
+  updateCurrent: function(song){
+    ApiActions.receiveUpdateSong(song);
   },
   unfollowUser: function(followToId){
     $.ajax({

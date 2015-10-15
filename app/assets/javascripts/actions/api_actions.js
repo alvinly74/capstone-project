@@ -11,10 +11,22 @@ ApiActions = {
       songs: songs
     });
   },
+  changeWindowSong: function(song){
+    AppDispatcher.dispatch({
+      actionType: SongConstants.WINDOW_SONG_CHANGE,
+      song:song
+    });
+  },
   receiveUser: function(users){
     AppDispatcher.dispatch({
-      actionType:UserConstant.USER_RECEIVED,
+      actionType: UserConstant.USER_RECEIVED,
       users: users
+    });
+  },
+  receiveUpdateSong:function(song){
+    AppDispatcher.dispatch({
+      actionType: SongConstants.CURRENT_SONG_CHANGE,
+      song: song
     });
   }
 };

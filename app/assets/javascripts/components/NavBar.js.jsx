@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+
   var signUp = function(){
     window.location = "/users/new";
     };
@@ -25,6 +26,7 @@
   );
 
   root.NavBar = React.createClass({
+    mixins: [ReactRouter.History],
     getInitialState: function(){
       return({ LogOutOrIn: status})
     },
@@ -40,33 +42,28 @@
       this.determineLogin();
       this.setState({ logOutOrIn: status})
     },
-
+    userShow: function(){
+      this.history.pushState(null,"users/" + window.CURRENT_USER_ID);
+    },
+    goHome: function(){
+      this.history.pushState(null,"/");
+    },
     render: function(){
       return(
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <button type="button" className="navbar-toggle collapsed"
-                      data-toggle="collapse"
-                      data-target="#collapse-menu"
-                      aria-expanded="false">
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-            </div>
-
-            <div className="collapse navbar-collapse" id="collapse-menu">
-              <ul className="nav navbar-nav pull-right">
-
-
-                <li ><a>Upload</a></li>
-                {this.state.logOutOrIn}
-              </ul>
-            </div>
-
+        <nav className="NavBar group">
+          <div className="NavBarLeft">
+            <p onClick={this.goHome}>AwWDiIo</p>
+            <p onClick={this.userShow}>
+            {window.CURRENT_USERNAME}
+            </p>
           </div>
-          </nav>
+          <div className="NavBarRight">
+            <ul className="NavBarRight">
+              <li ><a>Upload</a></li>
+              {this.state.logOutOrIn}
+            </ul>
+          </div>
+        </nav>
       );
     }
   });

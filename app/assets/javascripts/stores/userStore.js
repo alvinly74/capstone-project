@@ -2,7 +2,7 @@
   'use strict';
 
   var _users = [];
-  var USER_CHANGE = "change";
+  var USER_CHANGE = "USERCHANGED";
 
   var resetUser = function(user){
   _users = user;

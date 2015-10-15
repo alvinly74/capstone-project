@@ -40,6 +40,12 @@ class User < ActiveRecord::Base
     source: :follower
   )
 
+  has_many(
+    :followee_songs,
+    through: :followees,
+    source: :uploaded_songs
+  )
+
 
 
   after_initialize :ensure_session_token
