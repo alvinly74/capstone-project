@@ -53,11 +53,18 @@ var UserDetail = React.createClass({
       })
     }
   },
+  _following: function(){
+    if(this.state.current.following_count){
+      return this.state.current.following_count;
+    }
+  },
   render: function(){
+    if (this.state.current){
       return(
-        <div className="userDetail group">
+        <div className="userDetail under group">
           <img src={this.state.current.img_url} alt="avatar" height="200" width="200"/>
           <h1>{this.state.current.username}</h1>
+          <p>{this._following()}</p>
           <button onClick={this.followUser}>Follow User</button>
           <button onClick={this.unfollowUser}>Unfollow User</button>
           <div>
@@ -68,5 +75,8 @@ var UserDetail = React.createClass({
           </div>
         </div>
       );
+    } else {
+      return <div/>
+    }
   }
 })

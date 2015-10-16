@@ -3,11 +3,15 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.includes(:followers).includes(uploaded_songs: :likers)
   end
 
   def show
-    @user = User.find(params[:id])
+    if params[:id] == current_user.id
+      @user = User.find(params[:id]).includes(:followers).includes(uploaded_songs: :likers)
+    else
+      @user = User.find(params[:id]).includes(uploaded_songs: :likers)
+    end
   end
 
   def create

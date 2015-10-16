@@ -2,9 +2,9 @@ class Api::FollowsController < ApplicationController
   def create
     @user_follow = UserFollow.new(follow_params)
     if @user_follow.save
-      render json: ["Follow Success"]
+      render json: {follower: follow_params[:follower_id], success: true}
     else
-      render json: ["Follow Failed"]
+      render json: {success: false, message: @user_follow.errors.full_messages}
     end
   end
 

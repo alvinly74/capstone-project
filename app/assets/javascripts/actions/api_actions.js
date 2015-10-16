@@ -11,6 +11,12 @@ ApiActions = {
       songs: songs
     });
   },
+  likeSong: function(likeResponse){
+    AppDispatcher.dispatch({
+      actionType:SongConstants.SONGS_NEW_LIKE,
+      songId:likeResponse.song_id
+    });
+  },
   changeWindowSong: function(song){
     AppDispatcher.dispatch({
       actionType: SongConstants.WINDOW_SONG_CHANGE,
@@ -23,10 +29,17 @@ ApiActions = {
       users: users
     });
   },
-  receiveUpdateSong:function(song){
+  receiveUpdateSong: function(song){
     AppDispatcher.dispatch({
       actionType: SongConstants.CURRENT_SONG_CHANGE,
       song: song
+    });
+  },
+  updateUserFollow: function(followId, upOrDown){
+    AppDispatcher.dispatch({
+      actionType: UserConstant.UPDATE_USER_FOLLOW,
+      userId: followId,
+      upOrDown: upOrDown
     });
   }
 };

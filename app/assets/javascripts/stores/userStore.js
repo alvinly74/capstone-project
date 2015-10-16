@@ -7,6 +7,9 @@
   var resetUser = function(user){
   _users = user;
   };
+  var updateUserFollow = function(userId, upOrDown){
+    UserStore.find(userId).following_count += upOrDown;
+  };
 
   var UserStore = root.UserStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
@@ -30,11 +33,15 @@
     },
 
     dispatcherID: AppDispatcher.register(function(payload){
+      var result;
       switch(payload.actionType){
         case UserConstant.USER_RECEIVED:
-          var result = resetUser(payload.users);
+          result = resetUser(payload.users);
           UserStore.emit(USER_CHANGE);
           break;
+        case UserConstant.UPDATE_USER_FOLLOW:
+          result = updateUserFollow(payload.userId, payload.upOrDown);
+          UserStore.emit(USER_CHANGE);
       }
     })
   });

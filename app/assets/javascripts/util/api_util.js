@@ -40,10 +40,11 @@ ApiUtil = {
       method:'post',
       data:{like: {song_id:song.id, user_id:window.CURRENT_USER_ID}},
       success: function(response){
-        if(response[0]=== "like Failed"){
-          alert("You have already liked this song");
+        if(response.success=== true){
+          ApiActions.likeSong(response);
+          console.log("success");
         } else{
-          alert("like Successful!");
+          console.log("failures");
         }
       }
     });
@@ -66,10 +67,11 @@ ApiUtil = {
       method:'post',
       data: {follow: {follower_id:followToId, followee_id:window.CURRENT_USER_ID}},
       success: function(response){
-        if(response[0]=== "Follow Failed"){
-          alert("You have already followed this user");
+        if(response.success === true){
+          ApiActions.updateUserFollow(followToId, 1);
+          console.log("userFollowed");
         } else{
-          alert("Follow Successful!");
+          alert(response.message);
         }
       }
     });
@@ -84,7 +86,9 @@ ApiUtil = {
       data: {follow: {follower_id:followToId, followee_id:window.CURRENT_USER_ID}},
       success: function(response){
         if(response[0]=== "Unfollow Success"){
-          alert("Unfollow Successful");
+          ApiActions.updateUserFollow(followToId, -1);
+        } else {
+          alert("You weren't following to begin with");
         }
       }
     });

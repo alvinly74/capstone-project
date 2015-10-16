@@ -1,8 +1,12 @@
 var SongItem = React.createClass({
   mixins: [ReactRouter.History],
+  getInitialState: function(){
+    return {likeCount: this.props.song.likeCount}
+  },
   likeSong: function(){
     if(window.CURRENT_USER_ID){
       ApiUtil.likeSong(this.props.song);
+
     } else {
       alert("In order to like songs please log in.");
     }
@@ -10,7 +14,7 @@ var SongItem = React.createClass({
 
   unlikeSong: function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.unlikeSong(this.props.song);
+      this.props.song.likeCount -=1;
     }
   },
 
@@ -29,7 +33,7 @@ var SongItem = React.createClass({
 
   _submitted: function(){
     if(this.props.submitted){
-      return<p>submitted by:<a onClick={this.showUser}>{this.props.song.username}</a></p>;
+      return<p>submitted by:<a onClick={this.showUser}>{this.props.song.user.username}</a></p>;
     }
   },
 

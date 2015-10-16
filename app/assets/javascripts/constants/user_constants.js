@@ -1,3 +1,4 @@
 UserConstant = {
-  USER_RECEIVED: "User Received"
+  USER_RECEIVED: "User Received",
+  UPDATE_USER_FOLLOW:"USER FOLLOW UPDATED"
 };

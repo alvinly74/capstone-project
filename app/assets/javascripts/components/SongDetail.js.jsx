@@ -26,15 +26,8 @@ var SongDetail = React.createClass({
   },
 
   render:function(){
-    debugger;
       return(
-        <div>
-
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
+        <div className="under">
           <div>
             <h1>{this.state.windowSong.title}</h1>
             <p>{this.state.windowSong.description}</p>

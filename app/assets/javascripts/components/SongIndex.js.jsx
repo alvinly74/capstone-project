@@ -12,9 +12,8 @@ var SongIndex = React.createClass({
   },
 
   render:function(){
-    // debugger;
     return(
-      <div className="SongIndex">
+      <div className="SongIndex under">
         <h1>Songs by Folks you Followed</h1>
         <ul>
           {this.state.songs.map(function(song){

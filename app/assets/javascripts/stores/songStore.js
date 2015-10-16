@@ -8,6 +8,8 @@
   var LIST_CHANGE = "list change";
   var WINDOW_CHANGE = "SONG SHOW PAGE CHANGE";
   var UPDATE_CURRENT = "update current";
+  var LIKE_CHANGE = "CHANGE IN LIKES";
+
 
   var resetSongs = function(songs){
   _songs = songs.slice();
@@ -28,6 +30,14 @@
     },
     current: function(){
       return _currentSong;
+    },
+    find: function(songId){
+      var song;
+      _songs.forEach(function(s){
+        if(s.id === parseInt(songId)) { song = s; }
+      });
+      debugger;
+      return song;
     },
     addSongListChangeListener: function(callback){
       this.on(LIST_CHANGE, callback);
@@ -61,10 +71,14 @@
           result = changeWindowSong(payload.song);
           SongStore.emit(WINDOW_CHANGE);
           break;
-        case SongConstants.CURRENT_SONG_CHANGE:
-          result = updateCurrentSong(payload.song);
-          SongStore.emit(UPDATE_CURRENT);
-          break;
+          case SongConstants.CURRENT_SONG_CHANGE:
+            result = updateCurrentSong(payload.song);
+            SongStore.emit(UPDATE_CURRENT);
+            break;
+          case SongConstants.SONGS_NEW_LIKE:
+            result = likesong(payload.songid);
+            SongStore.emit(LIKE_CHANGE);
+            break;
       }
     })
   });

@@ -3,9 +3,9 @@ class Api::SongLikesController < ApplicationController
     @like = SongLike.new(likes_params)
 
     if @like.save
-      render json: ["like Success"]
+      render json: {song_id: likes_params[:song_id], success:true}
     else
-      render json: ["like Failed"]
+      render json: @like.errors.full_messages
     end
   end
 

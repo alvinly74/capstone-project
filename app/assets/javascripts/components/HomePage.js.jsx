@@ -1,28 +1,28 @@
 var HomePage = React.createClass({
   render:function(){
       return(
-        <h1 className="TESTINGPURPOSES">
+        <div className="TESTINGPURPOSES under">
 
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
-          <br/>text
+          <h1>Welcome {window.CURRENT_USERNAME}</h1>
+          <br/>text2
+          <br/>text3
+          <br/>text4
+          <br/>text5
+          <br/>text6
+          <br/>text7
+          <br/>text8
+          <br/>text9
+          <br/>text0
+          <br/>text11
+          <br/>text12
+          <br/>text13
+          <br/>text14
+          <br/>text15
+          <br/>text16
+          <br/>text17
+          <br/>text18
+          <br/>text19
+          <br/>text20
           <br/>text
           <br/>text
           <br/><br/>text
@@ -202,7 +202,7 @@ var HomePage = React.createClass({
           <br/>text
           <br/>text
           <br/>
-        </h1>
+        </div>
       )
   }
 });
