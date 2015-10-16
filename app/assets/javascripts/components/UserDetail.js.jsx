@@ -1,33 +1,17 @@
 var UserDetail = React.createClass({
   getInitialState: function(){
-    return {current: {}, followed: false};
+    return {current: {}};
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
     ApiUtil.fetchUsers();
   },
   componentWillReceiveProps: function(newProps) {
-    this.setState({current: UserStore.find(newProps.params.userId),
-                   followed: this._isFollowed()
-                 });
-  },
-  _isFollowed:function(){
-    var followed = false;
-    if(window.CURRENT_USER_ID){
-      if(this.state.current.followers){
-        this.state.current.followers.forEach(function(follower){
-          if(follower.id === window.CURRENT_USER_ID){
-            followed = true;
-          }
-        });
-      }
-    }
-    return followed;
+    this.setState({current: UserStore.find(newProps.params.userId)});
   },
   _onChange: function(){
-    this.setState({current: UserStore.find(this.props.params.userId),
-                   followed: this._isFollowed()
-                  });
+    this.setState({current: UserStore.find(this.props.params.userId)});
+    console.log(this.state.followed);
   },
   followUser:function(){
     if(window.CURRENT_USER_ID){
@@ -43,7 +27,12 @@ var UserDetail = React.createClass({
   },
 
   determineFollowButton: function(){
-    // placeholder. figure out the ternary shit
+    return (
+      <div>
+        <button onClick={this.followUser}>Follow User</button>
+        <button onClick={this.unfollowUser}>Unfollow User</button>
+      </div>
+    )
   },
 
   _songs: function(){
@@ -56,6 +45,8 @@ var UserDetail = React.createClass({
   _following: function(){
     if(this.state.current.following_count){
       return this.state.current.following_count;
+    } else {
+      return 0
     }
   },
   render: function(){
@@ -64,9 +55,7 @@ var UserDetail = React.createClass({
         <div className="userDetail under group">
           <img src={this.state.current.img_url} alt="avatar" height="200" width="200"/>
           <h1>{this.state.current.username}</h1>
-          <p>{this._following()}</p>
-          <button onClick={this.followUser}>Follow User</button>
-          <button onClick={this.unfollowUser}>Unfollow User</button>
+          <FollowUnfollow follow={this.state.current.current_user_follow} followCount={this._following()} user={this.state.current}/>
           <div>
             <h3>Uploaded Songs</h3>
             <ul id="UploadedSongs">

@@ -24,11 +24,17 @@ var SongDetail = React.createClass({
     window.CURRENT_PLAYING = false;
     document.getElementById('musicPlayer').pause();
   },
+  _username: function(){
+    if(this.state.windowSong.user.username){
+      return <h2>By {this.state.windowSong.user.username}</h2>
+    }
+  },
 
   render:function(){
       return(
         <div className="under">
-          <div>
+          <div className="SongTop">
+            <img src={this.state.windowSong.img_url} alt="songIcon" height="250" width="250"/>
             <h1>{this.state.windowSong.title}</h1>
             <p>{this.state.windowSong.description}</p>
             <button onClick={this.playSong}>play</button>

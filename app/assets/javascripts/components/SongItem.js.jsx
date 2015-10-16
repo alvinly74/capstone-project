@@ -1,22 +1,5 @@
 var SongItem = React.createClass({
   mixins: [ReactRouter.History],
-  getInitialState: function(){
-    return {likeCount: this.props.song.likeCount}
-  },
-  likeSong: function(){
-    if(window.CURRENT_USER_ID){
-      ApiUtil.updateSongLike(this.props.song, 1);
-    } else {
-      alert("In order to like songs please log in.");
-    }
-  },
-
-  unlikeSong: function(){
-    if(window.CURRENT_USER_ID){
-      ApiUtil.updateSongLike(this.props.song, -1);
-    }
-  },
-
   showUser: function(){
     this.history.pushState(null,"users/" + this.props.song.user_id);
   },
@@ -32,7 +15,7 @@ var SongItem = React.createClass({
 
   _submitted: function(){
     if(this.props.submitted){
-      return<p>submitted by:<a onClick={this.showUser}>{this.props.song.user.username}</a></p>;
+      return<p>By:<a onClick={this.showUser}>{this.props.song.user.username}</a></p>;
     }
   },
 
@@ -43,11 +26,11 @@ var SongItem = React.createClass({
           <p userId={this.props.song.user_id}>{this.props.song.title}</p>
           {this._submitted()}
           <br/>
-          <p>{this.props.song.likeCount}</p>
-          <button onClick={this.likeSong}>Like</button>
-          <button onClick={this.unlikeSong}>Unlike</button>
+          <LikeUnlike likeCount={this.props.song.likeCount}
+            song={this.props.song}
+            liked={this.props.song.current_user_likes}/>
           <button onClick={this.playSong}>play</button>
         </li>
-      )
+      );
   }
 });

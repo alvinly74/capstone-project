@@ -65,7 +65,7 @@ ApiUtil = {
     }
   },
   updateUserFollow: function(followToId, followUnfollow){
-    if (followUnfollow ===1){
+    if (followUnfollow === 1){
       $.ajax({
         url:"/api/follows",
         method:'post',

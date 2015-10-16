@@ -7,11 +7,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    if params[:id] == current_user.id
-      @user = User.find(params[:id]).includes(:followers).includes(uploaded_songs: :likers)
-    else
-      @user = User.find(params[:id]).includes(uploaded_songs: :likers)
-    end
+    @user = User.includes(:followers,uploaded_songs: :likers).find(params[:id])
   end
 
   def create
