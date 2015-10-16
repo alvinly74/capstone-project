@@ -5,8 +5,7 @@ var SongItem = React.createClass({
   },
   likeSong: function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.likeSong(this.props.song);
-
+      ApiUtil.updateSongLike(this.props.song, 1);
     } else {
       alert("In order to like songs please log in.");
     }
@@ -14,7 +13,7 @@ var SongItem = React.createClass({
 
   unlikeSong: function(){
     if(window.CURRENT_USER_ID){
-      this.props.song.likeCount -=1;
+      ApiUtil.updateSongLike(this.props.song, -1);
     }
   },
 

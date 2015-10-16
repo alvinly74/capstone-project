@@ -20,6 +20,9 @@
   var updateCurrentSong = function(song){
     _currentSong = song;
   };
+  var likeUnlikeSong = function(songId, likeUnlike){
+    SongStore.find(songId).likeCount += likeUnlike;
+  };
 
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
@@ -36,7 +39,6 @@
       _songs.forEach(function(s){
         if(s.id === parseInt(songId)) { song = s; }
       });
-      debugger;
       return song;
     },
     addSongListChangeListener: function(callback){
@@ -75,9 +77,9 @@
             result = updateCurrentSong(payload.song);
             SongStore.emit(UPDATE_CURRENT);
             break;
-          case SongConstants.SONGS_NEW_LIKE:
-            result = likesong(payload.songid);
-            SongStore.emit(LIKE_CHANGE);
+          case SongConstants.SONG_LIKE_CHANGE:
+            result = likeUnlikeSong(payload.songId, payload.likeUnlike);
+            SongStore.emit(LIST_CHANGE);
             break;
       }
     })

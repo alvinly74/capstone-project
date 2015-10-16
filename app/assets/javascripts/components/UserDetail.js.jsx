@@ -31,14 +31,14 @@ var UserDetail = React.createClass({
   },
   followUser:function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.followUser(this.props.params.userId);
+      ApiUtil.updateUserFollow(this.props.params.userId, 1);
     } else {
       alert("In order to follow users please log in.");
     }
   },
   unfollowUser:function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.unfollowUser(this.props.params.userId);
+      ApiUtil.updateUserFollow(this.props.params.userId, -1);
     }
   },
 

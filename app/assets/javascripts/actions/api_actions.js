@@ -11,9 +11,16 @@ ApiActions = {
       songs: songs
     });
   },
+  updateSongLike: function(song,likeUnlike){
+    AppDispatcher.dispatch({
+      actionType:SongConstants.SONG_LIKE_CHANGE,
+      songId: song.id,
+      likeUnlike:likeUnlike
+    });
+  },
   likeSong: function(likeResponse){
     AppDispatcher.dispatch({
-      actionType:SongConstants.SONGS_NEW_LIKE,
+      actionType:SongConstants.SONG_LIKE_CHANGE,
       songId:likeResponse.song_id
     });
   },
