@@ -5,7 +5,7 @@ var FollowUnfollow = React.createClass({
 
   _followUser: function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.updateUserFollow(this.props.user.id, 1);
+      ApiUtil.updateUser(this.props.user.id, 1);
       this.setState({followed: true});
     } else {
       alert("In order to follow users please log in.");
@@ -14,7 +14,7 @@ var FollowUnfollow = React.createClass({
 
   _unfollowUser: function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.updateUserFollow(this.props.user.id, -1);
+      ApiUtil.updateUser(this.props.user.id, -1);
       this.setState({followed: false});
     }
   },

@@ -3,10 +3,9 @@ Rails.application.routes.draw do
     resources :songs, only:[:index, :show, :create] do
       resource :like, only: [:create, :destroy]
     end
-    resources :users, only: [:index, :show ]
-    resources :follows, only: [:create, :destroy]
-
-
+    resources :users, only: [:index, :show ] do
+      resource :follow, only: [:create, :destroy]
+    end
   end
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]

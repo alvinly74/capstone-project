@@ -15,8 +15,9 @@
   var updateFlavorUser = function(user){
     _flavorUser = user;
   };
-  var updateUserFollow = function(userId, upOrDown){
-    UserStore.find(userId).following_count += upOrDown;
+  var updateUser = function(user){
+    delete _users[user.id];
+    _users[user.id] = user;
   };
 
   var UserStore = root.UserStore = $.extend({}, EventEmitter.prototype, {
@@ -50,7 +51,7 @@
           UserStore.emit(USER_CHANGE);
           break;
         case UserConstant.UPDATE_USER_FOLLOW:
-          result = updateUserFollow(payload.userId, payload.upOrDown);
+          result = updateUser(payload.user);
           UserStore.emit(USER_CHANGE);
       }
     })

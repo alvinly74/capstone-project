@@ -41,11 +41,10 @@ ApiActions = {
       song: song
     });
   },
-  updateUserFollow: function(followId, upOrDown){
+  updateUser: function(user){
     AppDispatcher.dispatch({
       actionType: UserConstant.UPDATE_USER_FOLLOW,
-      userId: followId,
-      upOrDown: upOrDown
+      user: user
     });
   }
 };

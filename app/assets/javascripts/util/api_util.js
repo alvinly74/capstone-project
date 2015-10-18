@@ -53,32 +53,21 @@ ApiUtil = {
       });
     }
   },
-  updateUserFollow: function(followToId, followUnfollow){
+  updateUser: function(followToId, followUnfollow){
     if (followUnfollow === 1){
       $.ajax({
-        url:"/api/follows",
+        url:"/api/users/" + followToId +"/follow",
         method:'post',
-        data: {follow: {follower_id:followToId, followee_id:window.CURRENT_USER_ID}},
         success: function(response){
-          if(response.success === true){
-            ApiActions.updateUserFollow(followToId, 1);
-            console.log("userFollowed");
-          } else{
-            alert(response.message);
+          ApiActions.updateUser(response);
           }
-        }
       });
     } else {
       $.ajax({
-        url:"/api/follows/" + followToId,
+        url:"/api/users/" + followToId +"/follow",
         method:'delete',
-        data: {follow: {follower_id:followToId, followee_id:window.CURRENT_USER_ID}},
         success: function(response){
-          if(response[0]=== "Unfollow Success"){
-            ApiActions.updateUserFollow(followToId, -1);
-          } else {
-            alert("You weren't following to begin with");
-          }
+          ApiActions.updateUser(response);
         }
       });
     }

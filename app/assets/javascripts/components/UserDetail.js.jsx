@@ -1,6 +1,6 @@
 var UserDetail = React.createClass({
   getInitialState: function(){
-    return {current: {}};
+    return {current: UserStore.find(this.props.params.userId)};
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
@@ -14,15 +14,16 @@ var UserDetail = React.createClass({
     this.setState({current: UserStore.find(this.props.params.userId)});
   },
   followUser:function(){
+    debugger;
     if(window.CURRENT_USER_ID){
-      ApiUtil.updateUserFollow(this.props.params.userId, 1);
+      ApiUtil.updateUser(this.props.params.userId, 1);
     } else {
       alert("In order to follow users please log in.");
     }
   },
   unfollowUser:function(){
     if(window.CURRENT_USER_ID){
-      ApiUtil.updateUserFollow(this.props.params.userId, -1);
+      ApiUtil.updateUser(this.props.params.userId, -1);
     }
   },
 
