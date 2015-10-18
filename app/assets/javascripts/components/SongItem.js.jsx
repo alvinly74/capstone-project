@@ -10,7 +10,7 @@ var SongItem = React.createClass({
 
   playSong: function(){
     window.CURRENT_PLAYING=true;
-      ApiUtil.updateCurrent(this.props.song);
+      ApiUtil.updateCurrentSong(this.props.song);
   },
 
   _submitted: function(){

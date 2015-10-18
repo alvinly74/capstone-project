@@ -108,7 +108,7 @@ table {
   background-color: darkgrey;
   color: orange;
   position: fixed;
-  height: 50px;
+  height: auto;
   bottom: 0;
   left: 0;
   right: 0;
@@ -116,8 +116,7 @@ table {
 }
 
 .AudioPlayer{
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 }
 
 .BotBarRight{
@@ -125,6 +124,10 @@ table {
 }
 .under{
 	padding-top: 50px;
+}
+.AudioPlayer{
+	width: 700px;
+
 }
 .group:after{
   display: block;

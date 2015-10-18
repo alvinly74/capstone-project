@@ -37,30 +37,19 @@ ApiUtil = {
   updateSongLike:function(song, likeUnlike){
     if (likeUnlike ===1){
       $.ajax({
-        url:"/api/song_likes",
+        url:"/api/songs/" + song.id + "/like",
         method:'post',
-        data:{like: {song_id:song.id, user_id:window.CURRENT_USER_ID}},
         success: function(response){
-          if(response.success=== true){
-            ApiActions.updateSongLike(song, 1);
-            console.log("Like success");
-          } else{
-            alert(response.message);
+            ApiActions.updateSong(response);
           }
-        }
       });
     } else {
       $.ajax({
-        url:"/api/song_likes/" + song.id,
+        url:"/api/songs/" + song.id + "/like",
         method:'delete',
-        data:{like: {song_id:song.id, user_id:window.CURRENT_USER_ID}},
         success: function(response){
-          if(response[0]=== "Unlike Success"){
-            ApiActions.updateSongLike(song, -1);
-          } else {
-            alert("You weren't liking to begin with");
+            ApiActions.updateSong(response);
           }
-        }
       });
     }
   },
@@ -94,18 +83,18 @@ ApiUtil = {
       });
     }
   },
-  updateCurrent: function(song){
-    ApiActions.receiveUpdateSong(song);
-  },
   fetchUsers: function(){
-  $.ajax({
-    url:"/api/users/",
-    method:"get",
-    success: function(users){
-      ApiActions.receiveUser(users);
-    }
-  });
-  }
+    $.ajax({
+      url:"/api/users/",
+      method:"get",
+      success: function(users){
+        ApiActions.receiveUser(users);
+      }
+    });
+  },
+  updateCurrentSong: function(song){
+    ApiActions.updateCurrentSong(song);
+  },
 
 
 };

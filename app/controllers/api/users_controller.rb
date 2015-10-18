@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:followers,uploaded_songs: :likers).find(params[:id])
+    @user = User.all.includes(:followers).includes(uploaded_songs: :likers).find(params[:id])
   end
 
   def create

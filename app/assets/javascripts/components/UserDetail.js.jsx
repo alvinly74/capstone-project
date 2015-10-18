@@ -4,6 +4,7 @@ var UserDetail = React.createClass({
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
+    SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchUsers();
   },
   componentWillReceiveProps: function(newProps) {
@@ -11,7 +12,6 @@ var UserDetail = React.createClass({
   },
   _onChange: function(){
     this.setState({current: UserStore.find(this.props.params.userId)});
-    console.log(this.state.followed);
   },
   followUser:function(){
     if(window.CURRENT_USER_ID){
@@ -26,27 +26,18 @@ var UserDetail = React.createClass({
     }
   },
 
-  determineFollowButton: function(){
-    return (
-      <div>
-        <button onClick={this.followUser}>Follow User</button>
-        <button onClick={this.unfollowUser}>Unfollow User</button>
-      </div>
-    )
-  },
-
   _songs: function(){
     if (this.state.current.uploaded_songs){
       return this.state.current.uploaded_songs.map(function(song){
         return <SongItem song={song} key={song.id}/>;
-      })
+      });
     }
   },
   _following: function(){
     if(this.state.current.following_count){
       return this.state.current.following_count;
     } else {
-      return 0
+      return 0;
     }
   },
   render: function(){
@@ -65,7 +56,7 @@ var UserDetail = React.createClass({
         </div>
       );
     } else {
-      return <div/>
+      return <div/>;
     }
   }
-})
+});

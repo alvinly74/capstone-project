@@ -11,11 +11,10 @@ ApiActions = {
       songs: songs
     });
   },
-  updateSongLike: function(song,likeUnlike){
+  updateSong: function(song){
     AppDispatcher.dispatch({
-      actionType:SongConstants.SONG_LIKE_CHANGE,
-      songId: song.id,
-      likeUnlike:likeUnlike
+      actionType:SongConstants.SONG_UPDATE,
+      song: song,
     });
   },
   likeSong: function(likeResponse){
@@ -36,7 +35,7 @@ ApiActions = {
       users: users
     });
   },
-  receiveUpdateSong: function(song){
+  updateCurrentSong: function(song){
     AppDispatcher.dispatch({
       actionType: SongConstants.CURRENT_SONG_CHANGE,
       song: song

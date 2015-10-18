@@ -1,7 +1,7 @@
 (function(root) {
   'use strict';
 
-  var _songs = [];
+  var _songs = {};
   var _windowSong = {};
   var _currentSong = {};
   var _currentplaying = false;
@@ -12,7 +12,10 @@
 
 
   var resetSongs = function(songs){
-  _songs = songs.slice();
+    _songs = {};
+    songs.forEach(function(song){
+      _songs[song.id] = song;
+    });
   };
   var changeWindowSong = function(song){
     _windowSong = song;
@@ -20,13 +23,14 @@
   var updateCurrentSong = function(song){
     _currentSong = song;
   };
-  var likeUnlikeSong = function(songId, likeUnlike){
-    SongStore.find(songId).likeCount += likeUnlike;
+  var updateSong = function(song){
+    delete _songs[song.id];
+    _songs[song.id] = song;
   };
 
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
-      return _songs.slice();
+      return Object.keys(_songs).map(function(id) { return _songs[id]; });
     },
     window: function(){
       return _windowSong;
@@ -35,11 +39,7 @@
       return _currentSong;
     },
     find: function(songId){
-      var song;
-      _songs.forEach(function(s){
-        if(s.id === parseInt(songId)) { song = s; }
-      });
-      return song;
+      return _songs[songId];
     },
     addSongListChangeListener: function(callback){
       this.on(LIST_CHANGE, callback);
@@ -77,8 +77,8 @@
             result = updateCurrentSong(payload.song);
             SongStore.emit(UPDATE_CURRENT);
             break;
-          case SongConstants.SONG_LIKE_CHANGE:
-            result = likeUnlikeSong(payload.songId, payload.likeUnlike);
+          case SongConstants.SONG_UPDATE:
+            result = updateSong(payload.song);
             SongStore.emit(LIST_CHANGE);
             break;
       }

@@ -21,6 +21,6 @@ var SongIndex = React.createClass({
         })}
         </ul>
       </div>
-    )
+    );
   }
 });

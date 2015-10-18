@@ -29,9 +29,9 @@ var LikeUnlike = React.createClass({
 
   _likeButton: function(){
     if (this.state.liked){
-      return <button onClick={this._unlikeSong}>Unlike</button>
+      return <button onClick={this._unlikeSong}>Unlike</button>;
     } else {
-      return <button onClick={this._likeSong}>Like</button>
+      return <button onClick={this._likeSong}>Like</button>;
     }
   },
   render: function(){

@@ -1,11 +1,19 @@
 (function(root) {
   'use strict';
 
-  var _users = [];
+  var _users = {};
+  var _flavorUser = {};
   var USER_CHANGE = "USERCHANGED";
+  var FLAVOR_CHANGE = "FLAVOR USER CHANGE";
 
   var resetUser = function(user){
-  _users = user;
+    _users = {};
+    user.forEach(function(user){
+      _users[user.id] = user;
+    });
+  };
+  var updateFlavorUser = function(user){
+    _flavorUser = user;
   };
   var updateUserFollow = function(userId, upOrDown){
     UserStore.find(userId).following_count += upOrDown;
@@ -13,19 +21,21 @@
 
   var UserStore = root.UserStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
-      return _users;
+      return Object.keys(_users).map(function(id) { return _users[id];});
     },
-
+    flavorUser: function(){
+      return _flavorUser;
+    },
     find: function(userId){
-      var user;
-      _users.forEach(function(u){
-        if(u.id === parseInt(userId)) { user = u; }
-      });
-      return user;
+      return _users[userId];
     },
 
     addChangeListener: function(callback){
       this.on(USER_CHANGE, callback);
+    },
+
+    addFlavorChangeListener: function(callback){
+      this.on(FLAVOR_CHANGE, callback);
     },
 
     removeChangeListener: function(callback){
