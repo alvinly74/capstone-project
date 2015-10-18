@@ -1,4 +1,5 @@
 var FlavorOfTheMonth = React.createClass({
+  mixins: [ReactRouter.History],
   getInitialState: function(){
     return {user: UserStore.find(Math.floor(Math.random() * UserStore.all().length + 1))};
   },
@@ -9,7 +10,9 @@ var FlavorOfTheMonth = React.createClass({
       ApiUtil.fetchUsers();
     }
   },
-
+  _showUser: function(){
+    this.history.pushState(null,"users/" + this.state.user.id);
+  },
   _onChange: function(){
     this.setState({user: UserStore.find(Math.floor(Math.random() * UserStore.all().length + 1))});
   },
@@ -18,11 +21,12 @@ var FlavorOfTheMonth = React.createClass({
       return(
         <div className="Flavor">
           <div className="FlavorUser">
-            {this.state.user.username}
+            <img onClick={this._showUser} src={this.state.user.img_url} alt="avatar" height="300" width="300"/>
+            <a onClick={this._showUser}>{this.state.user.username}</a>
           </div>
           <div className="FlavorSongs">
-            <div className="Flavor1">{this.state.user.uploaded_songs[0].title}</div>
-            <div className="Flavor2">{this.state.user.uploaded_songs[1].title}</div>
+            <SongItem song={this.state.user.uploaded_songs[0]} key ={this.state.user.uploaded_songs[0].id}/>
+            <SongItem song={this.state.user.uploaded_songs[1]} key ={this.state.user.uploaded_songs[1].id}/>
           </div>
         </div>
       );

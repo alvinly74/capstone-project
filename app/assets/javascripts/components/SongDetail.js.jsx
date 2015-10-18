@@ -17,16 +17,17 @@ var SongDetail = React.createClass({
 
   playSong: function(){
     window.CURRENT_PLAYING=true;
-      ApiUtil.updateCurrent(this.state.windowSong);
+      ApiUtil.updateCurrentSong(this.state.windowSong);
   },
 
   _pause:function(){
     window.CURRENT_PLAYING = false;
-    document.getElementById('musicPlayer').pause();
+    document.getElementById('wave').pause();
   },
   _username: function(){
     if(this.state.windowSong.user.username){
-      return <h2>By {this.state.windowSong.user.username}</h2>
+      // return <h2>By {this.state.windowSong.user.username}</h2>
+      return <div/>
     }
   },
 
