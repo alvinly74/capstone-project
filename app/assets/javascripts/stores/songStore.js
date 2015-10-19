@@ -24,6 +24,9 @@
     _windowSong = song;
   };
   var updateCurrentSong = function(song){
+    if (_currentSong === song){
+      _waveSurfer.play();
+    }
     _currentSong = song;
   };
   var updateSong = function(song){

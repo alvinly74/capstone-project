@@ -1,4 +1,5 @@
 var BotBar = React.createClass({
+  mixins: [ReactRouter.History],
   getInitialState: function(){
     return {waveSurfer: SongStore.waveSurfer(), waveSurfSong: SongStore.current()};
   },
@@ -39,6 +40,15 @@ var BotBar = React.createClass({
       this.state.waveSurfer.play();
     }
   },
+
+  _showUser: function(){
+    this.history.pushState(null,"users/" + this.state.waveSurfSong.user.id);
+  },
+
+  showSong: function(){
+    this.history.pushState(null,"songs/" + this.state.waveSurfSong.id);
+  },
+
   _setVolume: function(e){
     this.state.waveSurfer.setVolume(parseFloat(e.target.value)/100);
   },
@@ -46,9 +56,9 @@ var BotBar = React.createClass({
     if(this.state.waveSurfSong.user){
       return(
         <div className="NowPlaying">
-          Now Playing:<a>{this.state.waveSurfSong.title}</a>
+          Now Playing:<a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>
         <br/>
-          By:<a>{this.state.waveSurfSong.user.username}</a>
+          By:<a onClick={this._showUser}>{this.state.waveSurfSong.user.username}</a>
         </div>
       );
       } else {
@@ -59,8 +69,7 @@ var BotBar = React.createClass({
     return(
       <div className="BotBar">
         <div className="AudioPlayer">
-          <button onClick={this._play}>play</button>
-          <button onClick={this._pause}>pause</button>
+          <PlayPause song={this.state.waveSurfSong}/>
           <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="100"/>
           <div id="wave"/>
         </div>

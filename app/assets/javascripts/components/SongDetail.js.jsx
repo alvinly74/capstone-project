@@ -15,14 +15,6 @@ var SongDetail = React.createClass({
     this.setState({windowSong: SongStore.window()});
   },
 
-  playSong: function(){
-      ApiUtil.updateCurrentSong(this.state.windowSong);
-  },
-
-  _pause:function(){
-    document.getElementById('wave').pause();
-  },
-
   _showUser:function(){
     this.history.pushState(null,"users/" + this.state.windowSong.user_id);
   },
@@ -34,6 +26,7 @@ var SongDetail = React.createClass({
   },
 
   render:function(){
+
       return(
         <div className="under">
           <div className="SongTop">
@@ -41,8 +34,11 @@ var SongDetail = React.createClass({
             <h1>{this.state.windowSong.title}</h1>
             <p>{this.state.windowSong.description}</p>
             {this._username()}
-            <button onClick={this.playSong}>play</button>
-            <button onClick={this._pause}>pause</button>
+            <LikeUnlike likeCount={this.state.windowSong.likeCount}
+              song={this.state.windowSong}
+              liked={this.state.windowSong.current_user_likes}/>
+            <h1>LIKE UNLIKE DOESN'T WORK</h1>
+            <PlayPause song={this.state.windowSong}/>
           </div>
         </div>
       );

@@ -164,6 +164,10 @@ h3{
 	padding-top: 50px;
 }
 
+.Flavor a{
+	font-size:32px;
+}
+
 .LogSignForm{
 	position: relative;
 	text-align: center;

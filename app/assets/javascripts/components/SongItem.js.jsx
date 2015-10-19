@@ -24,7 +24,7 @@ var SongItem = React.createClass({
         <li className="SongItem">
           <img className="image" onClick={this.showSong} src={this.props.song.img_url} alt="songIcon" height="100" width="100"/>
           <p userId={this.props.song.user_id}>{this.props.song.title}</p>
-          
+
           <LikeUnlike likeCount={this.props.song.likeCount}
             song={this.props.song}
             liked={this.props.song.current_user_likes}/>
