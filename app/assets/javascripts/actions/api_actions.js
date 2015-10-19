@@ -29,6 +29,12 @@ ApiActions = {
       song:song
     });
   },
+  addRandomUser: function(user){
+    AppDispatcher.dispatch({
+      actionType: UserConstants.RANDOM_USER,
+      user: user
+    });
+  },
   receiveUser: function(users){
     AppDispatcher.dispatch({
       actionType: UserConstants.USER_RECEIVED,

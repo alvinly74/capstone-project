@@ -72,6 +72,15 @@ ApiUtil = {
       });
     }
   },
+  fetchRandomUser: function(){
+    $.ajax({
+      url:"/api/users/rand",
+      method:"get",
+      success: function(response){
+        ApiActions.addRandomUser(response);
+      }
+    });
+  },
   fetchUsers: function(){
     $.ajax({
       url:"/api/users/",

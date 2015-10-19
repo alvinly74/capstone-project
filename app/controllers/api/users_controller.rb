@@ -2,6 +2,14 @@ class Api::UsersController < ApplicationController
   def new
   end
 
+  def rand
+    user_id = User.pluck(:id).sample
+    while user_id == current_user.id do
+      user_id = User.pluck(:id).sample
+    end
+      @user = User.all.includes(:followers).includes(uploaded_songs: :likers).find(user_id)
+  end
+
   def index
     @users = User.all.includes(:followers).includes(uploaded_songs: :likers)
   end

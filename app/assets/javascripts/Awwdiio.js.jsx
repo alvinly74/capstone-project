@@ -24,4 +24,4 @@
     </Route>
   );
     React.render(<Router>{routes}</Router>, root);
-}
+};

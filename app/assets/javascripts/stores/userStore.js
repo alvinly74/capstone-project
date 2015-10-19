@@ -2,9 +2,8 @@
   'use strict';
 
   var _users = {};
-  var _flavorUser = {};
+  var _randomUser = 0;
   var USER_CHANGE = "USERCHANGED";
-  var FLAVOR_CHANGE = "FLAVOR USER CHANGE";
 
   var resetUser = function(user){
     _users = {};
@@ -12,9 +11,11 @@
       _users[user.id] = user;
     });
   };
-  var updateFlavorUser = function(user){
-    _flavorUser = user;
+  var addRandomUser = function(user){
+    _users[user.id] = user;
+    _randomUser = user.id;
   };
+
   var updateUser = function(user){
     delete _users[user.id];
     _users[user.id] = user;
@@ -25,7 +26,7 @@
       return Object.keys(_users).map(function(id) { return _users[id];});
     },
     flavorUser: function(){
-      return _flavorUser;
+      return _users[_randomUser];
     },
     find: function(userId){
       return _users[userId];
@@ -49,6 +50,11 @@
         case UserConstants.UPDATE_USER_FOLLOW:
           result = updateUser(payload.user);
           UserStore.emit(USER_CHANGE);
+          break;
+        case UserConstants.RANDOM_USER:
+          result = addRandomUser(payload.user);
+          UserStore.emit(USER_CHANGE);
+          break
       }
     })
   });

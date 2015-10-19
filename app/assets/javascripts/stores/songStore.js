@@ -32,7 +32,14 @@
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
-    
+    if (song.id == _windowSong.id) {
+      _windowSong = song;
+      SongStore.emit(WINDOW_CHANGE);
+    } else if (song.id == _currentSong.id) {
+
+    } else if (findInUserSongs(song.id)) {
+      // Update that copy of the song too
+    }
   };
   var updatePlayingStatus = function(playingstatus){
     _currentplaying = playingstatus;

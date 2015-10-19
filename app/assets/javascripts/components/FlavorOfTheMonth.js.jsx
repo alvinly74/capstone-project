@@ -1,23 +1,21 @@
 var FlavorOfTheMonth = React.createClass({
   mixins: [ReactRouter.History],
   getInitialState: function(){
-    return {user: UserStore.find(Math.floor(Math.random() * UserStore.all().length + 1))};
+    return {user: UserStore.flavorUser()};
   },
 
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
-    if (UserStore.all().length === 0){
-      ApiUtil.fetchUsers();
-    }
+    ApiUtil.fetchRandomUser();
   },
-  // componentWillUnmount: function(){
-  //   UserStore.removeChangeListener(this.onChange);
-  // },
+  componentWillUnmount: function(){
+    UserStore.removeChangeListener(this._onChange);
+  },
   _showUser: function(){
     this.history.pushState(null,"users/" + this.state.user.id);
   },
   _onChange: function(){
-    this.setState({user: UserStore.find(Math.floor(Math.random() * UserStore.all().length + 1))});
+    this.setState({user: UserStore.flavorUser()});
   },
   render:function(){
     if (this.state.user){

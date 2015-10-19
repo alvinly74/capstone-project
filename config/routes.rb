@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
+    get 'users/rand' => 'users#rand'
     resources :songs, only:[:index, :show, :create] do
       resource :like, only: [:create, :destroy]
     end
