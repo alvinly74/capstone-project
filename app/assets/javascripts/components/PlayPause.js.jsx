@@ -1,5 +1,5 @@
 var PlayPause = React.createClass({
-  getinitialState: function(){
+  getInitialState: function(){
     return{ waveSurfer: SongStore.waveSurfer(),
             currentSong: SongStore.current(),
             currentPlaying: SongStore.playing()};
@@ -27,9 +27,8 @@ var PlayPause = React.createClass({
   _determineButton: function(){
     if ((this.state.currentSong === this.props.song) && this.state.currentPlaying === true){
       return <button onClick={this._pause}>pause</button>;
-    } else {
-      return <button onClick={this._play}>Play</button>;
     }
+      return <button onClick={this._play}>Play</button>;
   },
   render: function(){
     if (this.state){

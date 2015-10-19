@@ -2,7 +2,7 @@
   'use strict';
 
   var _songs = {};
-  var _windowSong = 0;
+  var _windowSongId = 0;
   var _currentSong = 0;
   var _currentplaying = false;
   var _waveSurfer = Object.create(WaveSurfer);
@@ -21,7 +21,7 @@
     });
   };
   var changeWindowSong = function(song){
-    _windowSong = song.id;
+    _windowSongId = song.id;
   };
   var updateCurrentSong = function(song){
     if (_currentSong === song.id){
@@ -32,21 +32,30 @@
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
-    if (song.id == _windowSong.id) {
-      _windowSong = song.id;
+    if (song.id == _windowSongId) {
+      _windowSongId = song.id;
       SongStore.emit(WINDOW_CHANGE);
     }
+
   };
   var updatePlayingStatus = function(playingstatus){
     _currentplaying = playingstatus;
   };
 
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
+    userUploaded: function(userId){
+      var result = [];
+      Object.keys(_songs).forEach(function(id){
+        if (_songs[id].user_id === parseInt(userId))
+        result.push(_songs[id]);
+      });
+      return result;
+    },
     all: function(){
       return Object.keys(_songs).map(function(id) { return _songs[id]; });
     },
     window: function(){
-      return _songs[_windowSong];
+      return _songs[_windowSongId];
     },
     current: function(){
       return _songs[_currentSong];

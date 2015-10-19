@@ -28,7 +28,7 @@ var SongItem = React.createClass({
           <LikeUnlike likeCount={this.props.song.likeCount}
             song={this.props.song}
             liked={this.props.song.current_user_likes}/>
-          <button onClick={this.playSong}>play</button>
+          <PlayPause song={this.props.song}/>
         </li>
       );
   }

@@ -1,9 +1,10 @@
 var UserDetail = React.createClass({
   getInitialState: function(){
-    return {current: UserStore.find(this.props.params.userId)};
+    return {current: UserStore.find(this.props.params.userId), currentSongs: SongStore.userUploaded(this.props.params.userId)};
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
+    SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchUser(this.props.params.userId);
   },
   componentWillUnmount: function(){
@@ -13,12 +14,13 @@ var UserDetail = React.createClass({
     this.setState({current: UserStore.find(newProps.params.userId)});
   },
   _onChange: function(){
-    this.setState({current: UserStore.find(this.props.params.userId)});
+    this.setState({current: UserStore.find(this.props.params.userId),
+                   currentSongs: SongStore.userUploaded(this.props.params.userId)});
   },
 
   _songs: function(){
-    if (this.state.current.uploaded_songs){
-      return this.state.current.uploaded_songs.map(function(song){
+    if (this.state.currentSongs){
+      return this.state.currentSongs.map(function(song){
         return <SongItem song={song} key={song.id}/>;
       });
     }
