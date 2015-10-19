@@ -113,6 +113,7 @@ h3{
 .SongIndex{
   float:right;
 	height: 100%;
+	width: 400px;
 }
 
 .SongItem{
@@ -171,8 +172,8 @@ h3{
 .LogSignForm{
 	position: relative;
 	text-align: center;
-	top: 65%;
-	background-color: rgba(255,255,255,.80);
+	top: 60%;
+	background-color: rgba(0,0,0,.60);
 	width: 15%;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -192,7 +193,24 @@ h3{
 	border-top-right-radius: 40%;
 	border-bottom-right-radius: 15%;
 	float: right;
-},
+}
+
+.loginBanner{
+	color: hsla(195, 100%, 50%, 1);
+	position: relative;
+	text-align: center;
+	top: 20%;
+	background-color: rgba(255,255,255,.30);
+	width: 15%;
+	padding: 20px;
+	border-top-right-radius: 75px;
+	border-top-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 75px;
+	margin: auto;
+	font-size: 70px;
+	font-weight: 200;
+}
 
 .login{
 	height: 100vh;
