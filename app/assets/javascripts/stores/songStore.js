@@ -5,6 +5,9 @@
   var _windowSong = {};
   var _currentSong = {};
   var _currentplaying = false;
+  var _waveSurfer = Object.create(WaveSurfer);
+  var _waveSurfSong = {};
+
   var LIST_CHANGE = "list change";
   var WINDOW_CHANGE = "SONG SHOW PAGE CHANGE";
   var UPDATE_CURRENT = "update current";
@@ -27,6 +30,9 @@
     delete _songs[song.id];
     _songs[song.id] = song;
   };
+  var updatePlayingStatus = function(playingstatus){
+    _currentplaying = playingstatus;
+  };
 
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
@@ -41,6 +47,16 @@
     find: function(songId){
       return _songs[songId];
     },
+    playing: function(){
+      return _currentplaying;
+    },
+    waveSurfer: function(){
+      return _waveSurfer;
+    },
+    waveSurfSong: function(){
+      return _waveSurfSong;
+    },
+
     addSongListChangeListener: function(callback){
       this.on(LIST_CHANGE, callback);
     },
@@ -80,6 +96,10 @@
           case SongConstants.SONG_UPDATE:
             result = updateSong(payload.song);
             SongStore.emit(LIST_CHANGE);
+            break;
+          case SongConstants.SONG_STATUS_CHANGE:
+            result = updatePlayingStatus(payload.status);
+            SongStore.emit(UPDATE_CURRENT);
             break;
       }
     })

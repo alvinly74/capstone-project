@@ -21,7 +21,7 @@ var FlavorOfTheMonth = React.createClass({
       return(
         <div className="Flavor">
           <div className="FlavorUser">
-            <img onClick={this._showUser} src={this.state.user.img_url} alt="avatar" height="300" width="300"/>
+            <img className="image" onClick={this._showUser} src={this.state.user.img_url} alt="avatar" height="300" width="300"/>
             <a onClick={this._showUser}>{this.state.user.username}</a>
           </div>
           <div className="FlavorSongs">

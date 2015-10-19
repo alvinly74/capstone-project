@@ -16,32 +16,35 @@ var SongDetail = React.createClass({
   },
 
   playSong: function(){
-    window.CURRENT_PLAYING=true;
       ApiUtil.updateCurrentSong(this.state.windowSong);
   },
 
   _pause:function(){
-    window.CURRENT_PLAYING = false;
     document.getElementById('wave').pause();
   },
+
+  _showUser:function(){
+    this.history.pushState(null,"users/" + this.state.windowSong.user_id);
+  },
   _username: function(){
-    if(this.state.windowSong.user.username){
-      // return <h2>By {this.state.windowSong.user.username}</h2>
-      return <div/>
+    if(this.state.windowSong.user){
+      return <h2>By: <a onClick={this._showUser}>{this.state.windowSong.user.username}</a></h2>;
     }
+      return <div/>;
   },
 
   render:function(){
       return(
         <div className="under">
           <div className="SongTop">
-            <img src={this.state.windowSong.img_url} alt="songIcon" height="250" width="250"/>
+            <img className="image" src={this.state.windowSong.img_url} alt="songIcon" height="250" width="250"/>
             <h1>{this.state.windowSong.title}</h1>
             <p>{this.state.windowSong.description}</p>
+            {this._username()}
             <button onClick={this.playSong}>play</button>
             <button onClick={this._pause}>pause</button>
           </div>
         </div>
-      )
+      );
   }
 });

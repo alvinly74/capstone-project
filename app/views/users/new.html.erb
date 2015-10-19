@@ -1,18 +1,22 @@
-<h2>Sign Up</h2>
-<a href="/">Don't want to sign up? That's okay</a>
-<form action="/users" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label>
-    Username
-    <input placeholder="username" type="text" name="user[username]" value="">
-  </label>
-  <br>
-  <label>
-    Password
-    <input placeholder="password" type="password" name="user[password]" value="">
-  </label>
-  <br>
-  <input type="submit" value="Sign Up">
-</form>
-<br>
-<a href="/session/new">Log in here</a>
+<div class="SignUp">
+  <div class='LogSignForm'>
+    <h2>Sign Up</h2>
+    <a href="/">Don't want to sign up? That's okay</a>
+    <form action="/users" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label>
+        Username
+        <input placeholder="username" type="text" name="user[username]" value="">
+      </label>
+      <br>
+      <label>
+        Password
+        <input placeholder="password" type="password" name="user[password]" value="">
+      </label>
+      <br>
+      <input type="submit" value="Sign Up">
+    </form>
+    <br>
+    <a href="/session/new">Log in here</a>
+  <div/>
+<div/>

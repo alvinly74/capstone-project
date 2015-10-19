@@ -46,11 +46,11 @@
     dispatcherID: AppDispatcher.register(function(payload){
       var result;
       switch(payload.actionType){
-        case UserConstant.USER_RECEIVED:
+        case UserConstants.USER_RECEIVED:
           result = resetUser(payload.users);
           UserStore.emit(USER_CHANGE);
           break;
-        case UserConstant.UPDATE_USER_FOLLOW:
+        case UserConstants.UPDATE_USER_FOLLOW:
           result = updateUser(payload.user);
           UserStore.emit(USER_CHANGE);
       }

@@ -4,7 +4,6 @@ var UserDetail = React.createClass({
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
-    SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchUsers();
   },
   componentWillReceiveProps: function(newProps) {
@@ -12,19 +11,6 @@ var UserDetail = React.createClass({
   },
   _onChange: function(){
     this.setState({current: UserStore.find(this.props.params.userId)});
-  },
-  followUser:function(){
-    debugger;
-    if(window.CURRENT_USER_ID){
-      ApiUtil.updateUser(this.props.params.userId, 1);
-    } else {
-      alert("In order to follow users please log in.");
-    }
-  },
-  unfollowUser:function(){
-    if(window.CURRENT_USER_ID){
-      ApiUtil.updateUser(this.props.params.userId, -1);
-    }
   },
 
   _songs: function(){
@@ -45,11 +31,11 @@ var UserDetail = React.createClass({
     if (this.state.current){
       return(
         <div className="userDetail under group">
-          <img src={this.state.current.img_url} alt="avatar" height="200" width="200"/>
+          <img className="image" src={this.state.current.img_url} alt="avatar" height="300" width="300"/>
           <h1>{this.state.current.username}</h1>
           <FollowUnfollow follow={this.state.current.current_user_follow} followCount={this._following()} user={this.state.current}/>
           <div>
-            <h3>Uploaded Songs</h3>
+            <h2>Uploaded Songs</h2>
             <ul id="UploadedSongs">
             {this._songs()}
             </ul>

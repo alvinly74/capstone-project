@@ -81,6 +81,9 @@ ApiUtil = {
       }
     });
   },
+  updatePlayingStatus: function(status){
+    ApiActions.updatePlayingStatus(status);
+  },
   updateCurrentSong: function(song){
     ApiActions.updateCurrentSong(song);
   },

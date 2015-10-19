@@ -1,52 +1,54 @@
 var BotBar = React.createClass({
   getInitialState: function(){
-    var wavesurfer = Object.create(WaveSurfer);
-    return {wavesurfer: wavesurfer, waveSurfSong: SongStore.current(), song: SongStore.current()};
+    return {waveSurfer: SongStore.waveSurfer(), waveSurfSong: SongStore.current()};
   },
 
   componentDidMount: function(){
     SongStore.addCurrentSongChangeListener(this._onChange);
-    this.state.wavesurfer.init({
+    this.state.waveSurfer.init({
         container: document.querySelector('#wave'),
-        waveColor: 'violet',
-        progressColor: 'purple',
-        backend: 'MediaElement'
+        waveColor: 'deeppink',
+        progressColor: 'deepskyblue',
+        cursorColor: "darkviolet",
+        backend: 'MediaElement',
+        cursorWidth: 1,
+        barWidth: 3
     });
+    this.state.waveSurfer.load("");
   },
 
   _onChange:function(){
-    this.setState({song: SongStore.current()});
-    this.state.wavesurfer.play();
+    currentSong = SongStore.current();
+    if ( currentSong !== this.state.waveSurfSong) {
+      this.setState({ waveSurfSong: currentSong });
+      this.state.waveSurfer.load(currentSong.url);
+      this.state.waveSurfer.play();
+    }
   },
   _play:function(){
-    window.CURRENT_PLAYING = true;
-    this.state.wavesurfer.play();
+    ApiUtil.updatePlayingStatus(true);
+    this.state.waveSurfer.play();
   },
   _pause:function(){
-    window.CURRENT_PLAYING = false;
-    this.state.wavesurfer.pause();
+    ApiUtil.updatePlayingStatus(false);
+    this.state.waveSurfer.pause();
   },
 
   componentDidUpdate: function () {
-
-    if (this.state.waveSurfSong !== this.state.song) {
-      this.state.waveSurfSong = this.state.song;
-      this.state.wavesurfer.load(this.state.song.url);
-    }
-    if(window.CURRENT_PLAYING === true){
-      this.state.wavesurfer.play();
+    if(SongStore.playing() === true){
+      this.state.waveSurfer.play();
     }
   },
   _setVolume: function(e){
-    this.state.wavesurfer.setVolume(parseFloat(e.target.value)/100);
+    this.state.waveSurfer.setVolume(parseFloat(e.target.value)/100);
   },
   _nowPlaying: function(){
-    if(this.state.song.user){
+    if(this.state.waveSurfSong.user){
       return(
         <div className="NowPlaying">
-          Now Playing:<a>{this.state.song.title}</a>
+          Now Playing:<a>{this.state.waveSurfSong.title}</a>
         <br/>
-          By:<a>{this.state.song.user.username}</a>
+          By:<a>{this.state.waveSurfSong.user.username}</a>
         </div>
       );
       } else {
@@ -57,10 +59,10 @@ var BotBar = React.createClass({
     return(
       <div className="BotBar">
         <div className="AudioPlayer">
-          <div id="wave"/>
           <button onClick={this._play}>play</button>
           <button onClick={this._pause}>pause</button>
-          <input onChange={this._setVolume} type="range" name="volume" min="0" max="100"/>
+          <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="100"/>
+          <div id="wave"/>
         </div>
         <div className="BotBarRight">
           <div className="SocialMedia">

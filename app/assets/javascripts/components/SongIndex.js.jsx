@@ -14,7 +14,7 @@ var SongIndex = React.createClass({
   render:function(){
     return(
       <div className="SongIndex under">
-        <h1>Songs by Folks you Followed</h1>
+        <p>Songs by Folks you Followed</p>
         <ul>
           {this.state.songs.map(function(song){
             return <SongItem song={song} key={song.id} submitted="true" />;

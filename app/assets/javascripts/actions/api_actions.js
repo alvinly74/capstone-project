@@ -31,8 +31,14 @@ ApiActions = {
   },
   receiveUser: function(users){
     AppDispatcher.dispatch({
-      actionType: UserConstant.USER_RECEIVED,
+      actionType: UserConstants.USER_RECEIVED,
       users: users
+    });
+  },
+  updatePlayingStatus: function(status){
+    AppDispatcher.dispatch({
+      actionType: SongConstants.SONG_STATUS_CHANGE,
+      status:status
     });
   },
   updateCurrentSong: function(song){
@@ -43,7 +49,7 @@ ApiActions = {
   },
   updateUser: function(user){
     AppDispatcher.dispatch({
-      actionType: UserConstant.UPDATE_USER_FOLLOW,
+      actionType: UserConstants.UPDATE_USER_FOLLOW,
       user: user
     });
   }

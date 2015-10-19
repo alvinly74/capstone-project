@@ -34,6 +34,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+	font-family: fantasy;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -61,6 +62,25 @@ table {
 	border-spacing: 0;
 }
 
+a{
+	color: #00FF00;
+}
+h1,h2,h3,h4,h5,p{
+	color: orange;
+	font-size: 18px;
+}
+body{
+	background-color: hsla(180,25%,15%,1);
+}
+h1{
+	font-size: 32px;
+}
+h2{
+	font-size: 24px;
+},
+h3{
+	font-size: 16px;
+}
 .Wandow{
     position: relative;
 		width: 100%;
@@ -68,16 +88,21 @@ table {
 
 .NavBar{
   position: fixed;
-  background-color: darkgrey;
+  background-color: #1A1A1A;
   color: orange;
   left: 0;
   right: 0;
   border: 0;
 	height: 50px;
 }
+.NavBar li{
+	display: inline-block;
+}
+
+.NavBarLeft{
+}
 
 .NavBarRight{
-  display: block;
   float:right;
   list-style: none
 }
@@ -86,26 +111,24 @@ table {
 }
 
 .SongIndex{
-	margin-top: 50px;
-  width: 600px;
-  background-color: lightgrey;
   float:right;
-	height: 1000px;
-	overflow: auto;
+	height: 100%;
 }
 
 .SongItem{
-  background-color: darkgreen;
+	background-color: rgba(112,78,173,.65);
+  padding: 15px;
+  width: 390px;
   color: orange;
-  border: 3px solid black ;
+  border: 3px solid rgba(255,255,0,0.70);
+  border-radius: 10px;
   list-style-type: none;
+	overflow-y: auto;
 }
 
-.userDetail{
-
-}
 .BotBar{
-  background-color: darkgrey;
+	border-top: rgb(140, 13, 13) 3px solid;
+  background-color: #1A1A1A;
   color: orange;
   position: fixed;
   height: auto;
@@ -116,18 +139,67 @@ table {
 }
 
 .AudioPlayer{
-	margin: 0 auto;
+	margin: auto;
+	border-right: hsla(0,100%,50%,0.50) 3px solid;
+  width: 700px;
+	float: left;
 }
-
+#volume {
+	width: 128px;
+	position: relative;
+	bottom: 0;
+  top: 0;
+}
 .BotBarRight{
 	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border-left: rgba(255,0,0,5) 3px solid;
+	width: 390px;
+	padding: 10px;
+	height: 100%;
 }
 .under{
 	padding-top: 50px;
 }
-.AudioPlayer{
-	width: 700px;
 
+.LogSignForm{
+	position: relative;
+	text-align: center;
+	top: 65%;
+	background-color: rgba(255,255,255,.80);
+	width: 15%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top-right-radius: 75px;
+	border-top-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 75px;
+	margin: auto;
+	font-size: 16px;
+	font-weight: 600;
+
+}
+.image{
+	padding: 10px;
+	border-top-left-radius: 5%;
+	border-bottom-left-radius: 40%;
+	border-top-right-radius: 40%;
+	border-bottom-right-radius: 15%;
+	float: right;
+},
+
+.login{
+	height: 100vh;
+	background-image: url("http://res.cloudinary.com/awwdiio/image/upload/v1445140784/sign_up_page_qbgp9v.jpg");
+	background-size: cover;
+}
+
+.SignUp{
+	height: 100vh;
+	background-image: url("http://res.cloudinary.com/awwdiio/image/upload/v1445140785/login_page_un9uvq.jpg");
+	background-size: cover;
 }
 .group:after{
   display: block;

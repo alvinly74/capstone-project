@@ -29,7 +29,7 @@ var FollowUnfollow = React.createClass({
   render: function(){
     return(
           <div className="followUnfollow">
-            {this.props.followCount}
+            <h3>{this.props.followCount}</h3>
             {this._followButton()}
           </div>
           );
