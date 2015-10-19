@@ -1,7 +1,5 @@
 var HomePage = React.createClass({
-
   render:function(){
-
       return(
         <div className="HomePage under">
           <h1>Welcome, {window.CURRENT_USERNAME}</h1>

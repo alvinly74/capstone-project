@@ -6,8 +6,11 @@ var LikeUnlike = React.createClass({
   componentDidMount: function(){
     SongStore.addSongListChangeListener(this._onChange);
   },
+  componentWillUnmount: function(){
+    SongStore.removeSongListChangeListener(this._onChange);
+  },
   componentWillReceiveProps: function(newprops){
-    this.setState({liked :newprops.liked});
+    this.setState({liked: newprops.liked});
   },
 
   _onChange:function(){

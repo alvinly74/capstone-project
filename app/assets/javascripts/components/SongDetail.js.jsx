@@ -7,6 +7,9 @@ var SongDetail = React.createClass({
     SongStore.addWindowSongChangeListener(this._onChange);
     ApiUtil.changeWindowSong(this.props.params.songId);
   },
+  componentWillUnmount: function(){
+    SongStore.removeWindowSongChangeListener(this._onChange);
+  },
   componentWillReceiveProps: function(newprops){
     ApiUtil.changeWindowSong(newprops.params.songId);
   },

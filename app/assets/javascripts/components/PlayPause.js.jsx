@@ -7,6 +7,9 @@ var PlayPause = React.createClass({
   componentDidMount: function(){
     SongStore.addCurrentSongChangeListener(this._onChange);
   },
+  componentWillUnmount: function(){
+    SongStore.removeCurrentSongChangeListener(this._onChange);
+  },
   _play:function(){
     ApiUtil.updatePlayingStatus(true);
     ApiUtil.updateCurrentSong(this.props.song);

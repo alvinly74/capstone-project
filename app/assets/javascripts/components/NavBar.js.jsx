@@ -56,7 +56,7 @@
       return(
         <nav className="NavBar group">
           <ul className="NavBarLeft">
-            <li><a onClick={this.goHome}>AwWDiIo</a></li>
+            <li><a onClick={this.goHome}>AwWDI</a></li>
             <li><a onClick={this.userShow}>{window.CURRENT_USERNAME}</a></li>
         </ul>
           <div>

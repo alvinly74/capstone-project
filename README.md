@@ -1,11 +1,11 @@
-# AwwDiIo
+# AwwDI
 [AwwDiIo](http://soundcloud.com)
 [Heroku link][heroku] **NB:** This should be a link to your production site
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-PlaceHolderSoundCloud is a web application inspired by SoundCloud built using 
+PlaceHolderSoundCloud is a web application inspired by SoundCloud built using
 Ruby on Rails and React.js. It allows users to
 
 - [ ] Create / update an account
@@ -44,12 +44,12 @@ structure for the main application. After the basic Flux architecture has been
 set up, a song store will be implemented and a set of actions corresponding to
 the needed CRUD functionality created. Once this is done, I will create React
 views for the Songs `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Songs can be created and played in the browser. Lastly, while constructing 
+Songs can be created and played in the browser. Lastly, while constructing
 the views I will start using basic bootstrap for styling.
 
 ### PHase 2.5: Song CRUD 2.0 and how to save song files. (2 days)
 
-Given TA input, I will expand on basic user experiences. Commenting on songs and 
+Given TA input, I will expand on basic user experiences. Commenting on songs and
 playlists come to mind. Some time within the first week I will determine and implement
 Cloudinary, Filepicker, or Paperclip to manage my song files.
 
@@ -74,7 +74,7 @@ Users will be able to view recent activity from their followed users.
 
 Bootstrap will have been used to keep things organized up until now, but in
 Phase 4 I will add styling flourishes. and content for a guest user to have a quick
-enjoyable experience of AwwdiIo
+enjoyable experience of AwwdI
 
 [Details][phase-four]
 
@@ -84,7 +84,7 @@ At this point in time, my clone has the bare minimum to be called a SoundCloud c
 For the next 4 days I will add more functionality to become more like the SoundCloud platform.
 in the bonus section below, I plan to add content in the order provided. Waveform visualizer, updating users
 album art and avatars seem definitely within the realm of possibility if there are no major
-hiccups before phase 5(done within 2 days). Tagging and comments on songs should be possible 
+hiccups before phase 5(done within 2 days). Tagging and comments on songs should be possible
 before the end date of the project, if that is not the case, they will be implemented outside
 of the project deadline.
 

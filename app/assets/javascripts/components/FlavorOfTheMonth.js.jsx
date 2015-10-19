@@ -10,6 +10,9 @@ var FlavorOfTheMonth = React.createClass({
       ApiUtil.fetchUsers();
     }
   },
+  // componentWillUnmount: function(){
+  //   UserStore.removeChangeListener(this.onChange);
+  // },
   _showUser: function(){
     this.history.pushState(null,"users/" + this.state.user.id);
   },

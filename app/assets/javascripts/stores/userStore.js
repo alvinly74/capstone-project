@@ -35,10 +35,6 @@
       this.on(USER_CHANGE, callback);
     },
 
-    addFlavorChangeListener: function(callback){
-      this.on(FLAVOR_CHANGE, callback);
-    },
-
     removeChangeListener: function(callback){
       this.removeListener(USER_CHANGE, callback);
     },

@@ -7,6 +7,9 @@ var SongIndex = React.createClass({
     SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchAllSongs();
   },
+  componentWillUnmount: function(){
+    SongStore.removeSongListChangeListener(this._onChange);
+  },
   _onChange: function(){
       this.setState({songs: SongStore.all()});
   },

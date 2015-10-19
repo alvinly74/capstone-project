@@ -32,6 +32,7 @@
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
+    
   };
   var updatePlayingStatus = function(playingstatus){
     _currentplaying = playingstatus;

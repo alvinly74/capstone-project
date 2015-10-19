@@ -6,6 +6,9 @@ var UserDetail = React.createClass({
     UserStore.addChangeListener(this._onChange);
     ApiUtil.fetchUsers();
   },
+  componentWillUnmount: function(){
+    UserStore.removeChangeListener(this._onChange);
+  },
   componentWillReceiveProps: function(newProps) {
     this.setState({current: UserStore.find(newProps.params.userId)});
   },
