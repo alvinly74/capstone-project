@@ -53,7 +53,7 @@ var BotBar = React.createClass({
     this.state.waveSurfer.setVolume(parseFloat(e.target.value)/100);
   },
   _nowPlaying: function(){
-    if(this.state.waveSurfSong.user){
+    if(this.state.waveSurfSong){
       return(
         <p className="NowPlaying">
           Now Playing: <a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>

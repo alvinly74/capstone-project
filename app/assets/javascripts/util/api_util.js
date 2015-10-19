@@ -81,12 +81,12 @@ ApiUtil = {
       }
     });
   },
-  fetchUsers: function(){
+  fetchUser: function(userId){
     $.ajax({
-      url:"/api/users/",
+      url:"/api/users/" + userId,
       method:"get",
-      success: function(users){
-        ApiActions.receiveUser(users);
+      success: function(user){
+        ApiActions.receiveUser(user);
       }
     });
   },

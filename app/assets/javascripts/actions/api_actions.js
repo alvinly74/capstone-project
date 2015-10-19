@@ -35,10 +35,10 @@ ApiActions = {
       user: user
     });
   },
-  receiveUser: function(users){
+  receiveUser: function(user){
     AppDispatcher.dispatch({
       actionType: UserConstants.USER_RECEIVED,
-      users: users
+      user: user
     });
   },
   updatePlayingStatus: function(status){

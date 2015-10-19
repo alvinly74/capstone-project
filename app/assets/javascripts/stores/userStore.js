@@ -5,11 +5,8 @@
   var _randomUser = 0;
   var USER_CHANGE = "USERCHANGED";
 
-  var resetUser = function(user){
-    _users = {};
-    user.forEach(function(user){
+  var addUser = function(user){
       _users[user.id] = user;
-    });
   };
   var addRandomUser = function(user){
     _users[user.id] = user;
@@ -44,7 +41,7 @@
       var result;
       switch(payload.actionType){
         case UserConstants.USER_RECEIVED:
-          result = resetUser(payload.users);
+          result = addUser(payload.user);
           UserStore.emit(USER_CHANGE);
           break;
         case UserConstants.UPDATE_USER_FOLLOW:
@@ -54,7 +51,7 @@
         case UserConstants.RANDOM_USER:
           result = addRandomUser(payload.user);
           UserStore.emit(USER_CHANGE);
-          break
+          break;
       }
     })
   });

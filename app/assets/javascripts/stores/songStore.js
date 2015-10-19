@@ -2,11 +2,11 @@
   'use strict';
 
   var _songs = {};
-  var _windowSong = {};
-  var _currentSong = {};
+  var _windowSong = 0;
+  var _currentSong = 0;
   var _currentplaying = false;
   var _waveSurfer = Object.create(WaveSurfer);
-  var _waveSurfSong = {};
+  var _waveSurfSong = 0;
 
   var LIST_CHANGE = "list change";
   var WINDOW_CHANGE = "SONG SHOW PAGE CHANGE";
@@ -21,24 +21,20 @@
     });
   };
   var changeWindowSong = function(song){
-    _windowSong = song;
+    _windowSong = song.id;
   };
   var updateCurrentSong = function(song){
-    if (_currentSong === song){
+    if (_currentSong === song.id){
       _waveSurfer.play();
     }
-    _currentSong = song;
+    _currentSong = song.id;
   };
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
     if (song.id == _windowSong.id) {
-      _windowSong = song;
+      _windowSong = song.id;
       SongStore.emit(WINDOW_CHANGE);
-    } else if (song.id == _currentSong.id) {
-
-    } else if (findInUserSongs(song.id)) {
-      // Update that copy of the song too
     }
   };
   var updatePlayingStatus = function(playingstatus){
@@ -50,10 +46,10 @@
       return Object.keys(_songs).map(function(id) { return _songs[id]; });
     },
     window: function(){
-      return _windowSong;
+      return _songs[_windowSong];
     },
     current: function(){
-      return _currentSong;
+      return _songs[_currentSong];
     },
     find: function(songId){
       return _songs[songId];
@@ -65,7 +61,7 @@
       return _waveSurfer;
     },
     waveSurfSong: function(){
-      return _waveSurfSong;
+      return _songs[_waveSurfSong];
     },
 
     addSongListChangeListener: function(callback){

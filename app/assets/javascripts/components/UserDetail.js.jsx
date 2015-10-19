@@ -4,7 +4,7 @@ var UserDetail = React.createClass({
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
-    ApiUtil.fetchUsers();
+    ApiUtil.fetchUser(this.props.params.userId);
   },
   componentWillUnmount: function(){
     UserStore.removeChangeListener(this._onChange);

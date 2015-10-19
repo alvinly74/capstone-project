@@ -29,7 +29,7 @@ var SongDetail = React.createClass({
   },
 
   render:function(){
-
+    if(this.state.windowSong){
       return(
         <div className="under">
           <div className="SongTop">
@@ -45,5 +45,8 @@ var SongDetail = React.createClass({
           </div>
         </div>
       );
+    } else {
+      return <div/>;
+    }
   }
 });
