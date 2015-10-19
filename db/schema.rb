@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20151015182305) do
     t.text     "description",                                                                                                                null: false
     t.datetime "created_at",                                                                                                                 null: false
     t.datetime "updated_at",                                                                                                                 null: false
-    t.text     "img_url",     default: "http://res.cloudinary.com/awwdiio/image/upload/c_scale,w_200/v1444932715/archer_500x500_zrhro1.jpg"
+    t.text     "img_url",     default: "http://res.cloudinary.com/awwdiio/image/upload/v1445221777/defaultMusic_jpalge.jpg"
   end
 
   create_table "user_follows", force: :cascade do |t|
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151015182305) do
     t.string   "session_token",                                                                                                          null: false
     t.datetime "created_at",                                                                                                             null: false
     t.datetime "updated_at",                                                                                                             null: false
-    t.text     "img_url",         default: "http://res.cloudinary.com/awwdiio/image/upload/v1444932880/bobs_burgers_500x500_tr3ykn.gif"
+    t.text     "img_url",         default: "http://res.cloudinary.com/awwdiio/image/upload/v1445221609/GuestDefault_zr0bdl.png"
   end
 
 end

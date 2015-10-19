@@ -12,7 +12,7 @@ var BotBar = React.createClass({
         progressColor: 'deepskyblue',
         cursorColor: "darkviolet",
         backend: 'MediaElement',
-        cursorWidth: 1,
+        cursorWidth: 3,
         barWidth: 3
     });
     this.state.waveSurfer.load("");
@@ -55,11 +55,11 @@ var BotBar = React.createClass({
   _nowPlaying: function(){
     if(this.state.waveSurfSong.user){
       return(
-        <div className="NowPlaying">
-          Now Playing:<a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>
+        <p className="NowPlaying">
+          Now Playing: <a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>
         <br/>
-          By:<a onClick={this._showUser}>{this.state.waveSurfSong.user.username}</a>
-        </div>
+          By: <a onClick={this._showUser}>{this.state.waveSurfSong.user.username}</a>
+      </p>
       );
       } else {
         return <div/>;
@@ -74,9 +74,9 @@ var BotBar = React.createClass({
           <div id="wave"/>
         </div>
         <div className="BotBarRight">
-          <div className="SocialMedia">
+          <p className="SocialMedia">
             FB and resume icons and junk go here
-          </div>
+          </p>
           {this._nowPlaying()}
         </div>
       </div>
