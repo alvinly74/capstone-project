@@ -20,6 +20,12 @@ var BotBar = React.createClass({
 
   _onChange:function(){
     currentSong = SongStore.current();
+    if(currentSong && this.state.waveSurfSong){
+      if ( currentSong.id === this.state.waveSurfSong.id) {
+        this.setState({waveSurfSong: currentSong});
+        return;
+      }
+    }
     if ( currentSong !== this.state.waveSurfSong) {
       this.setState({ waveSurfSong: currentSong });
       this.state.waveSurfer.load(currentSong.url);
@@ -55,11 +61,16 @@ var BotBar = React.createClass({
   _nowPlaying: function(){
     if(this.state.waveSurfSong){
       return(
-        <p className="NowPlaying">
-          Now Playing: <a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>
-        <br/>
-          By: <a onClick={this._showUser}>{this.state.waveSurfSong.user.username}</a>
-      </p>
+        <div className="NowPlaying">
+          <p>
+            Now Playing: <a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>
+          <br/>
+            By: <a onClick={this._showUser}>{this.state.waveSurfSong.user.username}</a>
+          </p>
+          <LikeUnlike likeCount={this.state.waveSurfSong.likeCount}
+            song={this.state.waveSurfSong}
+            liked={this.state.waveSurfSong.current_user_likes}/>
+        </div>
       );
       } else {
         return <div/>;

@@ -40,7 +40,6 @@ var SongDetail = React.createClass({
             <LikeUnlike likeCount={this.state.windowSong.likeCount}
               song={this.state.windowSong}
               liked={this.state.windowSong.current_user_likes}/>
-            <h1>LIKE UNLIKE DOESN'T WORK</h1>
             <PlayPause song={this.state.windowSong}/>
           </div>
         </div>

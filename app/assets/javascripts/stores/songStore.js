@@ -32,9 +32,11 @@
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
-    if (song.id == _windowSongId) {
-      _windowSongId = song.id;
+    if (song.id === _windowSongId) {
       SongStore.emit(WINDOW_CHANGE);
+    }
+    if (song.id === _currentSong){
+      SongStore.emit(UPDATE_CURRENT);
     }
 
   };
