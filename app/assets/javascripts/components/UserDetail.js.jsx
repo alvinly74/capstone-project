@@ -9,6 +9,7 @@ var UserDetail = React.createClass({
   },
   componentWillUnmount: function(){
     UserStore.removeChangeListener(this._onChange);
+    SongStore.removeSongListChangeListener(this._onChange);
   },
   componentWillReceiveProps: function(newProps) {
     this.setState({current: UserStore.find(newProps.params.userId)});
@@ -36,9 +37,11 @@ var UserDetail = React.createClass({
     if (this.state.current){
       return(
         <div className="userDetail under group">
-          <img className="image" src={this.state.current.img_url} alt="avatar" height="300" width="300"/>
+          <img className="image" src={this.state.current.img_url} alt="avatar" height="400" width="400"/>
           <h1>{this.state.current.username}</h1>
-          <FollowUnfollow follow={this.state.current.current_user_follow} followCount={this._following()} user={this.state.current}/>
+          <FollowUnfollow follow={this.state.current.current_user_follow}
+                          followCount={this._following()}
+                          user={this.state.current}/>
           <div>
             <h2>Uploaded Songs</h2>
             <ul id="UploadedSongs">

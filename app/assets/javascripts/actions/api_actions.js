@@ -5,10 +5,10 @@ ApiActions = {
       songs: songs
     });
   },
-  receiveFollowedSongs: function(songs){
+  addSongsToStore: function(songs){
     AppDispatcher.dispatch({
-      actionType: SongConstants.FOLLOWED_SONGS_RECEIVED,
-      songs: songs
+      actionType:SongConstants.ADD_SONGS_TO_STORE,
+      songs:songs
     });
   },
   updateSong: function(song){
@@ -17,16 +17,10 @@ ApiActions = {
       song: song,
     });
   },
-  likeSong: function(likeResponse){
-    AppDispatcher.dispatch({
-      actionType:SongConstants.SONG_LIKE_CHANGE,
-      songId:likeResponse.song_id
-    });
-  },
-  changeWindowSong: function(song){
+  changeWindowSongId: function(songId){
     AppDispatcher.dispatch({
       actionType: SongConstants.WINDOW_SONG_CHANGE,
-      song:song
+      songId:songId
     });
   },
   addRandomUser: function(user){
@@ -35,10 +29,10 @@ ApiActions = {
       user: user
     });
   },
-  receiveUser: function(user){
+  addUsersToStore: function(users){
     AppDispatcher.dispatch({
-      actionType: UserConstants.USER_RECEIVED,
-      user: user
+      actionType: UserConstants.USERS_RECEIVED,
+      users: users
     });
   },
   updatePlayingStatus: function(status){
@@ -53,7 +47,7 @@ ApiActions = {
       song: song
     });
   },
-  updateUser: function(user){
+  updateUserFollow: function(user){
     AppDispatcher.dispatch({
       actionType: UserConstants.UPDATE_USER_FOLLOW,
       user: user

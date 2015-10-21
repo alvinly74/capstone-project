@@ -5,13 +5,13 @@ var SongDetail = React.createClass({
   },
   componentDidMount: function(){
     SongStore.addWindowSongChangeListener(this._onChange);
-    ApiUtil.changeWindowSong(this.props.params.songId);
+    ApiUtil.changeWindowSongId(this.props.params.songId);
   },
   componentWillUnmount: function(){
     SongStore.removeWindowSongChangeListener(this._onChange);
   },
   componentWillReceiveProps: function(newprops){
-    ApiUtil.changeWindowSong(newprops.params.songId);
+    ApiUtil.changeWindowSongId(newprops.params.songId);
   },
 
   _onChange: function(){
@@ -22,8 +22,14 @@ var SongDetail = React.createClass({
     this.history.pushState(null,"users/" + this.state.windowSong.user_id);
   },
   _username: function(){
-    if(this.state.windowSong.user){
-      return <h2>By: <a onClick={this._showUser}>{this.state.windowSong.user.username}</a></h2>;
+    // debugger;
+    if(this.state.windowSong.user_name){
+      return(
+        <div>
+          <img className="image Left" onClick={this._showUser} src={this.state.windowSong.user_img} alt="songIcon" height="200" width="200"/>
+          <h2>By: <a onClick={this._showUser}>{this.state.windowSong.user_name}</a></h2>;
+        </div>
+      );
     }
       return <div/>;
   },
@@ -33,10 +39,10 @@ var SongDetail = React.createClass({
       return(
         <div className="under">
           <div className="SongTop">
-            <img className="image" src={this.state.windowSong.img_url} alt="songIcon" height="250" width="250"/>
+            <img className="image" src={this.state.windowSong.img_url} alt="songIcon" height="400" width="400"/>
             <h1>{this.state.windowSong.title}</h1>
-            <p>{this.state.windowSong.description}</p>
             {this._username()}
+            <p>{this.state.windowSong.description}</p>
             <LikeUnlike likeCount={this.state.windowSong.likeCount}
               song={this.state.windowSong}
               liked={this.state.windowSong.current_user_likes}/>

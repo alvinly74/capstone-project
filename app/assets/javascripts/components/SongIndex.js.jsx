@@ -1,6 +1,6 @@
 var SongIndex = React.createClass({
   getInitialState: function(){
-    return {songs: SongStore.all()};
+    return {songs: SongStore.followedUserSongs()};
   },
 
   componentDidMount: function(){
@@ -11,7 +11,7 @@ var SongIndex = React.createClass({
     SongStore.removeSongListChangeListener(this._onChange);
   },
   _onChange: function(){
-      this.setState({songs: SongStore.all()});
+      this.setState({songs: SongStore.followedUserSongs()});
   },
 
   _feed: function(){

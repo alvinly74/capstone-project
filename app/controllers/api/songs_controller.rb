@@ -5,7 +5,12 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.where(user_id: current_user.followees.pluck(:id)).order(created_at: :asc)
+    if current_user
+      @songs = Song.where(user_id: current_user.followees.pluck(:id)).includes(user: :followers)
+                   .order(created_at: :asc)
+    else
+      @songs = nil
+    end
   end
 
   def show

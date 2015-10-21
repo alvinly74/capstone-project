@@ -2,6 +2,12 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def guest
+    @user = User.find(1)
+    sign_in(@user)
+    redirect_to root_url
+  end
+
   def create
     user = User.find_by_credentials(
     params[:user][:username],

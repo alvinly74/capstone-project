@@ -6,7 +6,7 @@
   var _currentSong = 0;
   var _currentplaying = false;
   var _waveSurfer = Object.create(WaveSurfer);
-  var _waveSurfSong = 0;
+  var _waveSurfSong = parseInt(Object.keys(_songs)[0]);
 
   var LIST_CHANGE = "list change";
   var WINDOW_CHANGE = "SONG SHOW PAGE CHANGE";
@@ -20,15 +20,18 @@
       _songs[song.id] = song;
     });
   };
-  var changeWindowSong = function(song){
-    _windowSongId = song.id;
+
+  var changeWindowSongId = function(id){
+    _windowSongId = id;
   };
+
   var updateCurrentSong = function(song){
     if (_currentSong === song.id){
       _waveSurfer.play();
     }
     _currentSong = song.id;
   };
+
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
@@ -38,13 +41,28 @@
     if (song.id === _currentSong){
       SongStore.emit(UPDATE_CURRENT);
     }
+  };
 
+  var addSongsToStore = function(songs){
+    songs.forEach(function(song){
+      _songs[song.id] = song;
+    });
   };
   var updatePlayingStatus = function(playingstatus){
     _currentplaying = playingstatus;
   };
 
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
+
+    followedUserSongs:function(){
+      var result = [];
+      Object.keys(_songs).forEach(function(id){
+        if (_songs[id].current_user_follow){
+          result.push(_songs[id]);
+        }
+      });
+      return result.reverse();
+    },
     userUploaded: function(userId){
       var result = [];
       Object.keys(_songs).forEach(function(id){
@@ -104,7 +122,7 @@
           SongStore.emit(LIST_CHANGE);
           break;
         case SongConstants.WINDOW_SONG_CHANGE:
-          result = changeWindowSong(payload.song);
+          result = changeWindowSongId(payload.songId);
           SongStore.emit(WINDOW_CHANGE);
           break;
           case SongConstants.CURRENT_SONG_CHANGE:
@@ -119,6 +137,9 @@
             result = updatePlayingStatus(payload.status);
             SongStore.emit(UPDATE_CURRENT);
             break;
+          case SongConstants.ADD_SONGS_TO_STORE:
+            result = addSongsToStore(payload.songs);
+            SongStore.emit(LIST_CHANGE);
       }
     })
   });

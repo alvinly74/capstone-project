@@ -1,5 +1,5 @@
 UserConstants = {
-  USER_RECEIVED: "User Received",
+  USERS_RECEIVED: "Users Received",
   UPDATE_USER_FOLLOW:"USER FOLLOW UPDATED",
   RANDOM_USER:"RANDOM USER BABYWOOOO"
 };

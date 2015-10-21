@@ -13,14 +13,15 @@
           {this.props.children}
           <BotBar/>
         </div>
-      )
+      );
     }
   });
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={HomePage}/>
-      <Route path="songs/:songId" component={SongDetail}></Route>
-      <Route path="users/:userId" component={UserDetail}></Route>
+      <Route path="songs/:songId" component={SongDetail}/>
+      <Route path="users/:userId" component={UserDetail}/>
+      <Route path="following" component={FollowIndex}/>
     </Route>
   );
     React.render(<Router>{routes}</Router>, root);

@@ -6,6 +6,7 @@ var BotBar = React.createClass({
 
   componentDidMount: function(){
     SongStore.addCurrentSongChangeListener(this._onChange);
+
     this.state.waveSurfer.init({
         container: document.querySelector('#wave'),
         waveColor: 'deeppink',
@@ -32,14 +33,6 @@ var BotBar = React.createClass({
       this.state.waveSurfer.play();
     }
   },
-  _play:function(){
-    ApiUtil.updatePlayingStatus(true);
-    this.state.waveSurfer.play();
-  },
-  _pause:function(){
-    ApiUtil.updatePlayingStatus(false);
-    this.state.waveSurfer.pause();
-  },
 
   componentDidUpdate: function () {
     if(SongStore.playing() === true){
@@ -48,7 +41,7 @@ var BotBar = React.createClass({
   },
 
   _showUser: function(){
-    this.history.pushState(null,"users/" + this.state.waveSurfSong.user.id);
+    this.history.pushState(null,"users/" + this.state.waveSurfSong.user_id);
   },
 
   showSong: function(){
@@ -65,7 +58,7 @@ var BotBar = React.createClass({
           <p>
             Now Playing: <a onClick={this.showSong}>{this.state.waveSurfSong.title}</a>
           <br/>
-            By: <a onClick={this._showUser}>{this.state.waveSurfSong.user.username}</a>
+            By: <a onClick={this._showUser}>{this.state.waveSurfSong.user_name}</a>
           </p>
           <LikeUnlike likeCount={this.state.waveSurfSong.likeCount}
             song={this.state.waveSurfSong}
@@ -76,12 +69,17 @@ var BotBar = React.createClass({
         return <div/>;
       }
     },
+  _songLoad: function(){
+    if (this.state.waveSurfSong){
+      return <PlayPause song={this.state.waveSurfSong}/>
+    }
+  },
   render: function(){
     return(
       <div className="BotBar">
         <div className="AudioPlayer">
-          <PlayPause song={this.state.waveSurfSong}/>
-          <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="100"/>
+          {this._songLoad()}
+          <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="50"/>
           <div id="wave"/>
         </div>
         <div className="BotBarRight">

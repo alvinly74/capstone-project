@@ -3,9 +3,8 @@ var HomePage = React.createClass({
       return(
         <div className="HomePage under">
           <h1>Welcome, {window.CURRENT_USERNAME}</h1>
-          <br/>
           <div>
-            <h2>Give this person a listen</h2>
+            <h2>Give this person a listen:</h2>
             <FlavorOfTheMonth/>
           </div>
         </div>

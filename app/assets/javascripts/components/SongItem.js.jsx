@@ -8,11 +8,6 @@ var SongItem = React.createClass({
     this.history.pushState(null,"songs/" + this.props.song.id);
   },
 
-  playSong: function(){
-      ApiUtil.updatePlayingStatus(true);
-      ApiUtil.updateCurrentSong(this.props.song);
-  },
-
   _submitted: function(){
     if(this.props.submitted){
       return<p >By:<a onClick={this.showUser}>{this.props.song.user.username}</a></p>;
@@ -25,9 +20,7 @@ var SongItem = React.createClass({
           <img className="image" onClick={this.showSong} src={this.props.song.img_url} alt="songIcon" height="100" width="100"/>
           <p userId={this.props.song.user_id}>{this.props.song.title}</p>
 
-          <LikeUnlike likeCount={this.props.song.likeCount}
-            song={this.props.song}
-            liked={this.props.song.current_user_likes}/>
+          <LikeUnlike song={this.props.song}/>
           <PlayPause song={this.props.song}/>
         </li>
       );

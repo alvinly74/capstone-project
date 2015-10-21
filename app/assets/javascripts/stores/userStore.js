@@ -5,20 +5,31 @@
   var _randomUser = 0;
   var USER_CHANGE = "USERCHANGED";
 
-  var addUser = function(user){
+  var addUsers = function(users){
+    users.forEach(function(user){
       _users[user.id] = user;
+    });
   };
   var addRandomUser = function(user){
     _users[user.id] = user;
     _randomUser = user.id;
   };
 
-  var updateUser = function(user){
+  var updateUserFollow = function(user){
     delete _users[user.id];
     _users[user.id] = user;
   };
 
   var UserStore = root.UserStore = $.extend({}, EventEmitter.prototype, {
+    followedUsers: function(){
+      var result = [];
+      Object.keys(_users).forEach(function(id){
+        if (_users[id].current_user_follow){
+          result.push(_users[id]);
+        }
+      });
+      return result;
+    },
     all: function(){
       return Object.keys(_users).map(function(id) { return _users[id];});
     },
@@ -40,12 +51,12 @@
     dispatcherID: AppDispatcher.register(function(payload){
       var result;
       switch(payload.actionType){
-        case UserConstants.USER_RECEIVED:
-          result = addUser(payload.user);
+        case UserConstants.USERS_RECEIVED:
+          result = addUsers(payload.users);
           UserStore.emit(USER_CHANGE);
           break;
         case UserConstants.UPDATE_USER_FOLLOW:
-          result = updateUser(payload.user);
+          result = updateUserFollow(payload.user);
           UserStore.emit(USER_CHANGE);
           break;
         case UserConstants.RANDOM_USER:

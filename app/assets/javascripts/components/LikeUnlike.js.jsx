@@ -1,20 +1,18 @@
 var LikeUnlike = React.createClass({
   getInitialState: function(){
-    return {liked: this.props.liked};
+    return {song: SongStore.find(this.props.song.id)};
   },
-
   componentDidMount: function(){
     SongStore.addSongListChangeListener(this._onChange);
   },
   componentWillUnmount: function(){
     SongStore.removeSongListChangeListener(this._onChange);
   },
-  componentWillReceiveProps: function(newprops){
-    this.setState({liked: newprops.liked});
+  _onChange: function(){
+    this.setState({song: SongStore.find(this.props.song.id)});
   },
-
-  _onChange:function(){
-    this.setState({liked: this.props.liked});
+  componentWillReceiveProps: function(newprops){
+    this.setState({liked: newprops.song.current_user_likes});
   },
   _likeSong: function(){
     if(window.CURRENT_USER_ID){
@@ -30,19 +28,24 @@ var LikeUnlike = React.createClass({
     }
   },
 
-  _likeButton: function(){
-    if (this.state.liked){
-      return <button onClick={this._unlikeSong}>Unlike</button>;
+  _determineButton: function(){
+    if (this.state.song.current_user_likes){
+      return <button className= "Botton" onClick={this._unlikeSong}>Unlike</button>;
     } else {
-      return <button onClick={this._likeSong}>Like</button>;
+      return <button className= "Batton" onClick={this._likeSong}>Like</button>;
     }
   },
+
   render: function(){
-    return(
+    if (this.state.song){
+      return(
           <div className="likeUnlike">
-            <p>{this.props.likeCount}</p>
-            {this._likeButton()}
+            <p>Likes: {this.props.song.likeCount}</p>
+            {this._determineButton()}
           </div>
           );
+    } else {
+      return <div/>;
+    }
   }
 });

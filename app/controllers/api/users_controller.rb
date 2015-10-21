@@ -4,10 +4,26 @@ class Api::UsersController < ApplicationController
 
   def rand
     user_id = User.pluck(:id).sample
+      if current_user.nil?
+        @user = User.all.includes(:followers).includes(uploaded_songs: :likers).find(user_id)
+        return
+      end
     while user_id == current_user.id do
       user_id = User.pluck(:id).sample
     end
       @user = User.all.includes(:followers).includes(uploaded_songs: :likers).find(user_id)
+  end
+
+  def guest
+    @user = User.find(1)
+    sign_in(@user);
+    @user
+  end
+
+  def following
+    @users = User.where(id: current_user.followees.pluck(:id))
+                 .includes(:followers)
+                 .includes(uploaded_songs: :likers)
   end
 
   def index

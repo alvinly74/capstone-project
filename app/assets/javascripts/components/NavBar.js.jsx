@@ -11,19 +11,22 @@
     ApiUtil.LogOut();
     window.location = "session/new";
   };
+  var guestLog = function(){
+    ApiUtil.guestLog();
+  };
 
   var LogOutOrIn;
   var SignInOrOut;
   var status;
   var logOutButtons = (
     <ul className="NavBarRight">
-      <li ><a>Upload</a></li>
+
       <li><a onClick={logOut}>Log Out</a></li>
     </ul>
   );
   var SignInOrUpButtons = (
     <ul className="NavBarRight">
-      <li ><a>Upload</a></li>
+      <li ><a onClick={guestLog}>Log In as Guest User</a></li>
       <li><a onClick={signUp}>Sign Up</a></li>
       <li><a onClick={signIn}> Log In</a></li>
     </ul>
@@ -52,12 +55,16 @@
     goHome: function(){
       this.history.pushState(null,"/");
     },
+    goFollowing: function(){
+      this.history.pushState(null,"/following")
+    },
     render: function(){
       return(
         <nav className="NavBar group">
           <ul className="NavBarLeft">
             <li><a onClick={this.goHome}>AwWDI</a></li>
             <li><a onClick={this.userShow}>{window.CURRENT_USERNAME}</a></li>
+            <li><a onClick={this.goFollowing}>Manage Following</a></li>
         </ul>
           <div>
               {this.state.logOutOrIn}
