@@ -102,7 +102,15 @@ h3{
     position: relative;
 		width: 100%;
 }
-
+li{
+	margin: 1px;
+	font-family: ‘Metrophobic’, Arial, serif;
+	font-style: italic;
+	font-weight: 900;
+	color: deepskyblue;
+	text-shadow: 1px 1px 3px deeppink;
+	font-size: 18px;
+}
 .NavBar{
   position: fixed;
   background-color: #1A1A1A;
@@ -114,9 +122,16 @@ h3{
 .NavBar li{
 	display: inline-block;
 	padding: 5px;
-	border:	3px solid lime;
+	height: 100%;
+	border-right: 3px solid #8C0D0D;
+	display: inline-block;
+	padding: 13px;
 }
-
+.NavBar li:hover{
+	cursor: pointer;
+	color: lime;
+	text-shadow: 1px 1px 3px orange;
+}
 .NavBarLeft{
 	border-bottom: 3px solid #8C0D0D;
 	height: 100%;
@@ -133,10 +148,10 @@ h3{
 }
 .NavBarRight > li{
   float:left;
-	border:	3px solid lime;
 }
 
 .SongIndex{
+	margin-top:50px;
 	border-left: 3px solid #8C0D0D;
 	padding: 5px;
 	background: #1A1A1A;
@@ -200,7 +215,7 @@ h3{
 }
 .under{
 	margin-left: 5%;
-	padding-top: 50px;
+	padding-top: 100px;
 }
 .FlavorSongs{
 	width: 40%;
@@ -287,7 +302,6 @@ h3{
 }
 
 .login{
-	color: orange;
 	height: 100vh;
 	background-image: url("http://res.cloudinary.com/awwdiio/image/upload/v1445140784/sign_up_page_qbgp9v.jpg");
 	background-size: cover;

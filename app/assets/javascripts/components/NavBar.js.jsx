@@ -20,14 +20,14 @@
   var status;
   var logOutButtons = (
     <ul className="NavBarRight">
-      <li><a onClick={logOut}>Log Out</a></li>
+      <li onClick={logOut}>Log Out</li>
     </ul>
   );
   var SignInOrUpButtons = (
     <ul className="NavBarRight">
-      <li ><a onClick={guestLog}>Log In as Guest User</a></li>
-      <li><a onClick={signUp}>Sign Up</a></li>
-      <li><a onClick={signIn}> Log In</a></li>
+      <li onClick={guestLog}>Log In as Guest User</li>
+      <li onClick={signUp}>Sign Up</li>
+      <li onClick={signIn}> Log In</li>
     </ul>
   );
 
@@ -64,16 +64,16 @@
     },
     _showUsername: function(){
       if (window.CURRENT_USERNAME){
-        return <li><a onClick={this.userShow}>{window.CURRENT_USERNAME}</a></li>;
+        return <li onClick={this.userShow}>{window.CURRENT_USERNAME}</li>;
       }
     },
     render: function(){
       return(
         <nav className="NavBar group">
           <ul className="NavBarLeft Left">
-            <li><a onClick={this.goHome}>Discover a Fellow User</a></li>
+            <li onClick={this.goHome}>Discover a Fellow User</li>
             {this._showUsername()}
-            <li><a onClick={this.goFollowing}>Manage Following (CSS on this navbar are Work in progress, they ugly I know)</a></li>
+            <li onClick={this.goFollowing}>Manage Following (CSS on this navbar are Work in progress, they ugly I know)</li>
         </ul>
             {this.state.logOutOrIn}
         </nav>
