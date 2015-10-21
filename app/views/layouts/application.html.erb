@@ -16,7 +16,7 @@
     window.CURRENT_USERNAME = '<%=current_user.username%>'
   </script>
   <%end%>
-  
+
   <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
 
 <%= yield %>

@@ -17,6 +17,9 @@ var BotBar = React.createClass({
         barWidth: 3
     });
     this.state.waveSurfer.load("");
+    this.state.waveSurfer.on("finish", function(){
+      ApiUtil.updatePlayingStatus(false);
+    });
   },
 
   _onChange:function(){

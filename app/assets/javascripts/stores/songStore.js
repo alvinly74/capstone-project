@@ -55,13 +55,15 @@
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
 
     followedUserSongs:function(){
-      var result = [];
+      var songlist = [];
+      var limitOne = [];
       Object.keys(_songs).forEach(function(id){
-        if (_songs[id].current_user_follow){
-          result.push(_songs[id]);
+        if (_songs[id].current_user_follow && limitOne.indexOf(_songs[id].user_id) === -1){
+          songlist.push(_songs[id]);
+          limitOne.push(_songs[id].user_id);
         }
       });
-      return result.reverse();
+      return songlist.reverse();
     },
     userUploaded: function(userId){
       var result = [];

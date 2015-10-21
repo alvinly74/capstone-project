@@ -70,6 +70,7 @@ a{
 	text-shadow: 1px 1px 3px deeppink;
 }
 a:hover{
+	cursor:pointer;
 	color:lime;
 	text-shadow: 1px 1px 3px orange;
 }
@@ -261,6 +262,7 @@ h3{
 }
 
 .image:hover{
+	cursor:pointer;
 	border: 3px inset lime;
 	opacity:.7;
 }
