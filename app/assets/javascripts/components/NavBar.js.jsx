@@ -25,7 +25,7 @@
   );
   var SignInOrUpButtons = (
     <ul className="NavBarRight">
-      <li onClick={guestLog}>Log In as Guest User</li>
+      <li onClick={guestLog}>Log In as Guest</li>
       <li onClick={signUp}>Sign Up</li>
       <li onClick={signIn}> Log In</li>
     </ul>

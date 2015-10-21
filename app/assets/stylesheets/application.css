@@ -121,7 +121,7 @@ li{
 }
 .NavBar li{
 	display: inline-block;
-	padding: 5px;
+	padding: 4px;
 	height: 100%;
 	border-right: 3px solid #8C0D0D;
 	display: inline-block;
