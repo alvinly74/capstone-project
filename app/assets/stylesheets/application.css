@@ -185,7 +185,7 @@ li{
   background-color: #1A1A1A;
   color: orange;
   position: fixed;
-  height: auto;
+  height: 128px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -193,15 +193,19 @@ li{
 }
 
 .AudioPlayer{
-	margin: auto;
+	background: black;
+  padding: 5px;
+  border: 3px solid navy;
+  margin: 5px;
   width: 80%;
 	float: left;
 }
 #volume {
-	width: 100%;
+	width: calc(100% - 67px);
 	position: relative;
+	display: inline-block;
 	bottom: 0;
-  top: 0;
+	top: 0;
 }
 .BotBarRight{
 	float: right;

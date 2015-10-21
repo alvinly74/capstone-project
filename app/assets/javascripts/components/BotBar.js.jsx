@@ -81,8 +81,8 @@ var BotBar = React.createClass({
     return(
       <div className="BotBar">
         <div className="AudioPlayer">
-          {this._songLoad()}
           <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="50"/>
+          {this._songLoad()}
           <div id="wave"/>
         </div>
         <div className="BotBarRight">
