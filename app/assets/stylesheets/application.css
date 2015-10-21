@@ -112,6 +112,8 @@ h3{
 }
 .NavBar li{
 	display: inline-block;
+	padding: 5px;
+	border:	3px solid lime;
 }
 
 .NavBarLeft{
@@ -130,6 +132,7 @@ h3{
 }
 .NavBarRight > li{
   float:left;
+	border:	3px solid lime;
 }
 
 .SongIndex{
@@ -206,6 +209,8 @@ h3{
 	font-size:32px;
 }
 .UserIndex{
+	overflow-y: auto;
+	height: 879px;
 	margin-right: 25%;
 }
 .UserList{

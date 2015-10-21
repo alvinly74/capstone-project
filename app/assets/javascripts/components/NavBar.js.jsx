@@ -52,19 +52,27 @@
       this.history.pushState(null,"users/" + window.CURRENT_USER_ID);
     },
     goHome: function(){
+      // if (window.location.pathname === "/"){
+        // ApiUtil.fetchRandomUser();
+      // } else {
       this.history.pushState(null,"/");
+      // }
     },
     goFollowing: function(){
       this.history.pushState(null,"/following");
     },
-
+    _showUsername: function(){
+      if (window.CURRENT_USERNAME){
+        return <li><a onClick={this.userShow}>{window.CURRENT_USERNAME}</a></li>;
+      }
+    },
     render: function(){
       return(
         <nav className="NavBar group">
           <ul className="NavBarLeft Left">
-            <li><a onClick={this.goHome}>AwWDI</a></li>
-            <li><a onClick={this.userShow}>{window.CURRENT_USERNAME}</a></li>
-            <li><a onClick={this.goFollowing}>Manage Following</a></li>
+            <li><a onClick={this.goHome}>Discover a Fellow User(currently half working. click elsewhere then click back)</a></li>
+            {this._showUsername()}
+            <li><a onClick={this.goFollowing}>Manage Following (CSS on this navbar are Work in progress, they ugly I know)</a></li>
         </ul>
             {this.state.logOutOrIn}
         </nav>

@@ -17,7 +17,30 @@ user07 = User.create!({username: "MaloryArcher", img_url:"http://res.cloudinary.
 user08 = User.create!({username: "RayGilette", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445221608/RayGilette_oigsba.jpg", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
 user09 = User.create!({username: "DoctorKrieger", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445221608/tumblr_nlhs72rLfk1r0opvmo1_500_bp7yak.jpg", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
 user10 = User.create!({username: "Woodhouse", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445221610/WoodHouse_xzbfmq.jpg", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
-user11 = User.create!({username: "BarryDillon", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+
+# user11 = User.create!({username: "Arnold", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user12 = User.create!({username: "GeraldJohanssen", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user13 = User.create!({username: "HelgaGPataki", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user14 = User.create!({username: "PhoebeHeyerdahl", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user15 = User.create!({username: "HaroldBerman", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user16 = User.create!({username: "StinkyPeterson", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user17 = User.create!({username: "Sid", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user18 = User.create!({username: "Rhonda", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user19 = User.create!({username: "Brainy", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user20 = User.create!({username: "EugeneHorowitz", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+# user21 = User.create!({username: "Curly", img_url:"http://res.cloudinary.com/awwdiio/image/upload/c_scale,h_500,w_500/v1445221608/BarryDillon_x6it27.png", password_digest: "$2a$10$pEDp.XqVxnZXjUrKMXeupevUdizCptkIXIr39kKPCXKtjjVYXnFb6", session_token: "SDFSDFSDFSDFSDFW"})
+
+
+
+
+
+
+
+
+
+
+
+
 
 song01 = Song.create!({title: "Superman", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445222870/Superman_imfpdo.jpg", url: "http://res.cloudinary.com/awwdiio/video/upload/v1444866573/Goldfinger_-_Superman_kipjht.mp3", description: "As seen in Tony Hawk's Pro Skater", user_id: 1})
 song02 = Song.create!({title: "The Clear Blue Sky", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445222868/ClearBlue_Sky_mjspe6.jpg", url: "http://res.cloudinary.com/awwdiio/video/upload/v1444866572/Tsukasa_-_The_Clear_Blue_Sky_qimswl.mp3", description: "From DJ Max, a Korean Rhythm game", user_id: 2})
@@ -44,7 +67,31 @@ song22 = Song.create!({title: "WhiteBlue", img_url:"http://res.cloudinary.com/aw
 song23 = Song.create!({title: "Space Age Love Song", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445222868/AFlockOfSeagulls_m6hlxz.jpg", url: "http://res.cloudinary.com/awwdiio/video/upload/v1444935252/A_Flock_Of_Seagulls_-_Space_Age_Love_Song_stzcy6.mp3", description: "a Flock of Seagulls, discovered through a cartoon series 'Symbionic Titan'", user_id: 1})
 song24 = Song.create!({title: "I Ran", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445222868/AFlockOfSeagulls_m6hlxz.jpg", url: "http://res.cloudinary.com/awwdiio/video/upload/v1444935290/A_Flock_Of_Seagulls_-_I_Ran_nlauqh.mp3", description: "One doesn't listen to a Flock of Seagulls without this classic", user_id: 2})
 song25 = Song.create!({title: "Transfer Affection", img_url:"http://res.cloudinary.com/awwdiio/image/upload/v1445222868/AFlockOfSeagulls_m6hlxz.jpg", url: "http://res.cloudinary.com/awwdiio/video/upload/v1444935282/A_Flock_Of_Seagulls_-_Transfer_Affection_ucywkk.mp3", description: "Trying to Transfer my data", user_id: 3})
-song26 = Song.create!({title: "Archer Theme Song", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445290907/Archer_-_FX_fbkz46.mp3", description: "Trying to Transfer my data", user_id: 1})
+# song26 = Song.create!({title: "Archer Theme Song", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445290907/Archer_-_FX_fbkz46.mp3", description: "Trying to Transfer my data", user_id: 1})
+# song27 = Song.create!({title: "NY Rush", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444123/15_NY_Rush_owvkrm.mp3", description: "Cowboy Bebop, an anime localized for western audiences in the 90s", user_id: 14})
+# song28 = Song.create!({title: "Tank!", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444208/02_Tank_TV_Edit_dhhymh.mp3", description: "Cowboy Bebop's opening theme song", user_id: 15})
+# song29 = Song.create!({title: "Say Hello(Explicit)", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444203/07_-_2_Mello_-_Say_Hello_to_the_Black_Omen_Jay-Z_vs._Chrono_Trigger_Mashup_kbhhpz.mp3", description: "from the album 'Chrono Jigga', a mashup album between Jay-Z and the video game Chrono Trigger", user_id: 16})
+# song30 = Song.create!({title: "Ignorant Scene", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444208/04_-_2_Mello_-_Ignorant_Scene_Jay-Z_vs._Chrono_Trigger_Mashup_jqjzil.mp3", description: "from the album 'Chrono Jigga', a mashup album between Jay-Z and the video game Chrono Trigger", user_id: 17})
+# song31 = Song.create!({title: "An Encore In Time", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444217/03_-_2_Mello_-_An_Encore_In_Time_Jay-Z_vs._Chrono_Trigger_Mashup_w49a3h.mp3", description: "from the album 'Chrono Jigga', a mashup album between Jay-Z and the video game Chrono Trigger", user_id: 18})
+# song32 = Song.create!({title: "Public Chrono Announcement", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444215/02_-_2_Mello_-_Public_Chrono_Announcement_Jay-Z_vs._Chrono_Trigger_Mashup_xrkitm.mp3", description: "from the album 'Chrono Jigga', a mashup album between Jay-Z and the video game Chrono Trigger", user_id: 19})
+# song33 = Song.create!({title: "Tengen Toppa Dairantou pt.1", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444473/02_OverClocked_Assembled_Super_Smash_Bros._series_-_Tengen_Toppa_Dairantou_-_Part_1_-_Game_Set_sn4atn.mp3", description: "OCRemix.com presents Tenga Toppa Dairantou part 1, a rap compilation of many of our users singing to Super Smash Bros. music.", user_id: 20})
+# song34 = Song.create!({title: "Pineapple Princess(Kinsey Moor Remix)", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444577/14._Pineapple_Princess_From_Hawaiiannette_Kinsey_Moore_Remix_bddfm7.mp3", description: "In 2014, Disney reached out to a bunch of electronic artists to create an EDM remix album of their music. this is Dconstructed", user_id: 21})
+# song35 = Song.create!({title: "Disco Zombi Italia", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444667/2.Carpenter_Brut_-_Disco_Zombi_Italia_igzcdl.mp3", description: "Carpenter Brut is like Justice, if Justice only made 'Stressed'", user_id: 13})
+# song36 = Song.create!({title: "Roller Mobster", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444796/1.Carpenter_Brut_-_Roller_Mobster_hrtfhs.mp3", description: "Carpenter Brut is at it again with another high intesity electronic hit!", user_id: 12})
+# song37 = Song.create!({title: "To the Top", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444948/ToTheTop_ykgepp.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song38 = Song.create!({title: "It's Safe Now", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444945/22_-_ItsSafeNow_t1d8yn.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song39 = Song.create!({title: "Inner Animal", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444959/21_-_InnerAnimal_parrfo.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song40 = Song.create!({title: "Electric Dreams", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444949/20_-_ElectricDreams_do5sqv.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song41 = Song.create!({title: "Daisuke", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444948/16_-_Daisuke_v4skdo.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song42 = Song.create!({title: "A New Morning", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444932/13_-_ANewMorning_smvmdk.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song43 = Song.create!({title: "Release", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444952/12_-_Release_tcwzkv.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song44 = Song.create!({title: "Perturbator", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444937/11_-_Perturbator_a8cpts.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song45 = Song.create!({title: "Musikk", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444917/10_-_Musikk2_ppcjta.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song46 = Song.create!({title: "Knock", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444920/09_-_Knock_pyykux.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song47 = Song.create!({title: "Hotline", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444917/08_-_Hotline_x4ns7m.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song48 = Song.create!({title: "Crystals", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444932/04_-_Crystals_irr3t0.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song49 = Song.create!({title: "Paris", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444916/03_-_Paris2_ypttdv.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
+# song50 = Song.create!({title: "Hydrogen", url:"http://res.cloudinary.com/awwdiio/video/upload/v1445444922/02_-_Hydrogen_mzqk9n.mp3", description: "Taken from the Hotline Miami soundtrack", user_id: 11})
 
 
 song_like01 = SongLike.create!({song_id: 1, user_id:1})
@@ -62,9 +109,26 @@ song_like10 = SongLike.create!({song_id: 10, user_id:1})
 
 
 
-user_follow1 = UserFollow.create!({follower_id: 1, followee_id: 2})
-user_follow2 = UserFollow.create!({follower_id: 2, followee_id: 3})
-user_follow3 = UserFollow.create!({follower_id: 3, followee_id: 1})
-user_follow4 = UserFollow.create!({follower_id: 1, followee_id: 3})
-user_follow5 = UserFollow.create!({follower_id: 2, followee_id: 4})
-user_follow6 = UserFollow.create!({follower_id: 3, followee_id: 4})
+user_follow01 = UserFollow.create!({follower_id: 1, followee_id: 2})
+user_follow02 = UserFollow.create!({follower_id: 2, followee_id: 3})
+user_follow03 = UserFollow.create!({follower_id: 3, followee_id: 1})
+user_follow04 = UserFollow.create!({follower_id: 1, followee_id: 3})
+user_follow05 = UserFollow.create!({follower_id: 2, followee_id: 1})
+user_follow06 = UserFollow.create!({follower_id: 4, followee_id: 1})
+user_follow07 = UserFollow.create!({follower_id: 5, followee_id: 1})
+user_follow08 = UserFollow.create!({follower_id: 6, followee_id: 1})
+user_follow09 = UserFollow.create!({follower_id: 7, followee_id: 1})
+user_follow10 = UserFollow.create!({follower_id: 8, followee_id: 1})
+user_follow11 = UserFollow.create!({follower_id: 9, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 10, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 11, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 12, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 13, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 14, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 15, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 16, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 17, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 18, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 19, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 20, followee_id: 1})
+# user_follow11 = UserFollow.create!({follower_id: 21, followee_id: 1})

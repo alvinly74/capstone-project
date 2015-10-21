@@ -42,10 +42,8 @@ var SongDetail = React.createClass({
             <img className="image" src={this.state.windowSong.img_url} alt="songIcon" height="400" width="400"/>
             <h1>{this.state.windowSong.title}</h1>
             {this._username()}
-            <p>{this.state.windowSong.description}</p>
-            <LikeUnlike likeCount={this.state.windowSong.likeCount}
-              song={this.state.windowSong}
-              liked={this.state.windowSong.current_user_likes}/>
+            <p>Description: {this.state.windowSong.description}</p>
+            <LikeUnlike song={this.state.windowSong}/>
             <PlayPause song={this.state.windowSong}/>
           </div>
         </div>

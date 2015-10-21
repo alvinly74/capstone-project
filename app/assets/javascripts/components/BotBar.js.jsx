@@ -71,7 +71,7 @@ var BotBar = React.createClass({
     },
   _songLoad: function(){
     if (this.state.waveSurfSong){
-      return <PlayPause song={this.state.waveSurfSong}/>
+      return <PlayPause song={this.state.waveSurfSong}/>;
     }
   },
   render: function(){
