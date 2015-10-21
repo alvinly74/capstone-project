@@ -21,15 +21,15 @@ var FollowIndex = React.createClass({
     } else {
         return(
           this.state.users.map(function(user){
-            return <UserItem user={user}/>;
+            return <UserItem user={user} key={user.id}/>;
           }));
       }
   },
   render: function(){
     return (
-      <div className="under" >
+      <div className="UserIndex under group" >
         <h1>Folks You're Following:</h1>
-        <ul>
+        <ul className="UserList">
           {this._userItem()}
         </ul>
         </div>

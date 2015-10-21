@@ -1,12 +1,19 @@
 var FollowUnfollow = React.createClass({
   getInitialState: function(){
-    return {followed: this.props.follow};
+    return {user: UserStore.find(this.props.user.id)};
   },
-
+  componentDidMount: function(){
+    UserStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function(){
+    UserStore.removeChangeListener(this._onChange);
+  },
+  _onChange: function(){
+    this.setState({user: UserStore.find(this.props.user.id)});
+  },
   _followUser: function(){
     if(window.CURRENT_USER_ID){
       ApiUtil.updateUserFollow(this.props.user.id, 1);
-      this.setState({followed: true});
     } else {
       alert("In order to follow users please log in.");
     }
@@ -15,12 +22,11 @@ var FollowUnfollow = React.createClass({
   _unfollowUser: function(){
     if(window.CURRENT_USER_ID){
       ApiUtil.updateUserFollow(this.props.user.id, -1);
-      this.setState({followed: false});
     }
   },
 
-  _followButton: function(){
-    if (this.state.followed){
+  _determineButton: function(){
+    if (this.state.user.current_user_follow){
       return <button className="Botton" onClick={this._unfollowUser}>Unfollow</button>;
     } else {
       return <button className="Batton" onClick={this._followUser}>Follow</button>;
@@ -29,8 +35,8 @@ var FollowUnfollow = React.createClass({
   render: function(){
     return(
           <div className="followUnfollow">
-            <h3>{this.props.followCount}</h3>
-            {this._followButton()}
+            <h3>{this.state.user.following_count}</h3>
+            {this._determineButton()}
           </div>
           );
   }

@@ -83,10 +83,10 @@ var BotBar = React.createClass({
           <div id="wave"/>
         </div>
         <div className="BotBarRight">
+          {this._nowPlaying()}
           <p className="SocialMedia">
             FB and resume icons and junk go here
           </p>
-          {this._nowPlaying()}
         </div>
       </div>
     );

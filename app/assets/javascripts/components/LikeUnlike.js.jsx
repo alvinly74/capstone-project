@@ -40,7 +40,7 @@ var LikeUnlike = React.createClass({
     if (this.state.song){
       return(
           <div className="likeUnlike">
-            <p>Likes: {this.props.song.likeCount}</p>
+            <p>Likes: {this.state.song.likeCount}</p>
             {this._determineButton()}
           </div>
           );

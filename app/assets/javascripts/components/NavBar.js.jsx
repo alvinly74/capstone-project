@@ -20,7 +20,6 @@
   var status;
   var logOutButtons = (
     <ul className="NavBarRight">
-
       <li><a onClick={logOut}>Log Out</a></li>
     </ul>
   );
@@ -56,19 +55,18 @@
       this.history.pushState(null,"/");
     },
     goFollowing: function(){
-      this.history.pushState(null,"/following")
+      this.history.pushState(null,"/following");
     },
+
     render: function(){
       return(
         <nav className="NavBar group">
-          <ul className="NavBarLeft">
+          <ul className="NavBarLeft Left">
             <li><a onClick={this.goHome}>AwWDI</a></li>
             <li><a onClick={this.userShow}>{window.CURRENT_USERNAME}</a></li>
             <li><a onClick={this.goFollowing}>Manage Following</a></li>
         </ul>
-          <div>
-              {this.state.logOutOrIn}
-          </div>
+            {this.state.logOutOrIn}
         </nav>
       );
     }
