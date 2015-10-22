@@ -22,7 +22,11 @@ var UserDetail = React.createClass({
   _songs: function(){
     if (this.state.currentSongs){
       return this.state.currentSongs.map(function(song){
-        return <SongItem song={song} key={song.id}/>;
+        return (
+          <div className="SongContainer">
+            <SongItem song={song} key={song.id}/>;
+          </div>
+        );
       });
     }
   },
@@ -37,16 +41,18 @@ var UserDetail = React.createClass({
     if (this.state.current){
       return(
         <div className="userDetail under group">
-          <img className="image" src={this.state.current.img_url} alt="avatar" height="400" width="400"/>
-          <h1>{this.state.current.username}</h1>
-          <FollowUnfollow follow={this.state.current.current_user_follow}
-                          followCount={this._following()}
-                          user={this.state.current}/>
-          <div>
-            <h2>Uploaded Songs</h2>
-            <ul id="UploadedSongs">
-            {this._songs()}
-            </ul>
+          <div className="userDetailLeft pull-left">
+            <img className="image None" src={this.state.current.img_url} alt="avatar" height="400" width="400"/>
+          </div>
+          <div className="userDetailRight pull-left">
+            <h1>{this.state.current.username}</h1>
+            <FollowUnfollow user={this.state.current}/>
+            <div>
+              <h2>Uploaded Songs</h2>
+              <ul>
+              {this._songs()}
+              </ul>
+            </div>
           </div>
         </div>
       );

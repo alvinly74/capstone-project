@@ -11,10 +11,11 @@ var BotBar = React.createClass({
         container: document.querySelector('#wave'),
         waveColor: 'deeppink',
         progressColor: 'deepskyblue',
-        cursorColor: "darkviolet",
+        cursorColor: "orange",
         backend: 'MediaElement',
         cursorWidth: 3,
-        barWidth: 3
+        barWidth: 3,
+        height: 91
     });
     this.state.waveSurfer.load("");
     this.state.waveSurfer.on("finish", function(){
@@ -81,9 +82,12 @@ var BotBar = React.createClass({
     return(
       <div className="BotBar">
         <div className="AudioPlayer">
-          <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="50"/>
-          {this._songLoad()}
           <div id="wave"/>
+          <div id="controls">
+            <p>Vol:</p>
+            <input id="volume" onChange={this._setVolume} type="range" name="volume" min="0" max="100" defaultValue="50"/>
+            {this._songLoad()}
+          </div>
         </div>
         <div className="BotBarRight">
           {this._nowPlaying()}

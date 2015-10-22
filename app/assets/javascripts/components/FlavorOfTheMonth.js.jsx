@@ -21,6 +21,7 @@ var FlavorOfTheMonth = React.createClass({
     this.history.pushState(null,"users/" + this.state.user.id);
   },
   _flavorSongs: function(){
+    // debugger;
       if (Object.keys(this.state.songs).length < 2) {
         return <div/>;
       } else {
@@ -41,6 +42,7 @@ var FlavorOfTheMonth = React.createClass({
             <a onClick={this._showUser}>{this.state.user.username}</a>
           </div>
           {this._flavorSongs()}
+          <a onClick={this._showUser}>More from {this.state.user.username}...</a>
         </div>
       );
     } else {

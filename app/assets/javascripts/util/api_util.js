@@ -8,7 +8,15 @@ ApiUtil = {
       }
     });
   },
-
+  fetchLikedSongs: function(){
+    $.ajax({
+      url:"/api/songs/liking",
+      method:"get",
+      success: function(songs){
+        ApiActions.addSongsToStore(songs);
+      }
+    });
+  },
   updateSongLike:function(song, likeUnlike){
     var status;
     if (likeUnlike ===1){

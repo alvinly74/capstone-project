@@ -62,6 +62,10 @@
     goFollowing: function(){
       this.history.pushState(null,"/following");
     },
+    goLiking: function(){
+      this.history.pushState(null,"/liking");
+    },
+
     _showUsername: function(){
       if (window.CURRENT_USERNAME){
         return <li onClick={this.userShow}>{window.CURRENT_USERNAME}</li>;
@@ -73,7 +77,8 @@
           <ul className="NavBarLeft Left">
             <li onClick={this.goHome}>Discover a Fellow User</li>
             {this._showUsername()}
-            <li onClick={this.goFollowing}>Manage Following (CSS on this navbar are Work in progress, they ugly I know)</li>
+            <li onClick={this.goFollowing}>Manage Following</li>
+            <li onClick={this.goLiking}>Manage Likes</li>
         </ul>
             {this.state.logOutOrIn}
         </nav>

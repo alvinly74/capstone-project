@@ -87,10 +87,11 @@ h1{
 	margin: 10px;
 }
 body{
+	overflow: hidden;
 	background-color: hsla(180,25%,15%,1);
 }
 h1{
-	font-size: 32px;
+	font-size: 48px;
 }
 h2{
 	font-size: 24px;
@@ -151,17 +152,22 @@ li{
 }
 
 .SongIndex{
-	margin-top:50px;
 	border-left: 3px solid #8C0D0D;
 	padding: 5px;
 	background: #1A1A1A;
-  float:right;
-	height: 915px;
+	position: fixed;
 	width: 20%;
+	right: 0px;
+	bottom: 128px;
+	top: 50px;
 	overflow-y: auto;
 }
-#UploadedSongs{
-	width: 30%;
+
+.SongContainer{
+		display: inline-block;
+		width: 330px;
+		padding-right: 0px;
+		margin: 5px;
 }
 .SongItem{
 	background-color: rgba(112,78,173,0.3);
@@ -173,6 +179,7 @@ li{
 	border-top-right-radius: 5%;
 	border-bottom-left-radius: 10%;
 	border-bottom-right-radius: 15%;
+	position: relative;
 	list-style-type: none;
 	overflow-y: auto;
 }
@@ -189,24 +196,18 @@ li{
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
 }
 
 .AudioPlayer{
 	background: black;
-  padding: 5px;
-  border: 3px solid navy;
-  margin: 5px;
   width: 80%;
 	float: left;
 }
-#volume {
-	width: calc(100% - 67px);
-	position: relative;
-	display: inline-block;
-	bottom: 0;
-	top: 0;
+
+#wave{
+    border: 3px solid #9400D3;
 }
+
 .BotBarRight{
 	float: right;
 	border-left: hsla(0,100%,50%,0.50) 3px solid;
@@ -218,8 +219,13 @@ li{
 	height: 100%;
 }
 .under{
-	margin-left: 5%;
-	padding-top: 100px;
+	margin-left: 4%;
+	padding-top: 50px;
+	width: 76%;
+	bottom: 128px;
+	position: fixed;
+	overflow-y: auto;
+	top: 50px;
 }
 .FlavorSongs{
 	width: 40%;
@@ -228,10 +234,14 @@ li{
 .Flavor a{
 	font-size:32px;
 }
-.UserIndex{
-	overflow-y: auto;
-	height: 879px;
-	margin-right: 25%;
+.userDetail{
+	display: inline-block;
+}
+.userDetailLeft{
+	width:410px;
+}
+.userDetailRight{
+	width: calc(100% - 410px);
 }
 .UserList{
 	float:left;
@@ -245,9 +255,9 @@ li{
 	border: 4px double #6441A5;
 	margin: 5px;
 	padding: 10px;
-	width: 350px;
+	width: 330px;
 	height: 300px;
-	float:right;
+	display: inline-block;
 }
 .UserItem:hover{
   background-color: rgba(0, 0, 128, 0.1);
@@ -271,7 +281,8 @@ li{
 
 }
 .image{
-	margin: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
 	border: 3px outset orange;
 	border-top-left-radius: 5%;
 	border-bottom-left-radius: 40%;
@@ -287,6 +298,9 @@ li{
 }
 .Left{
 	float:left;
+}
+.None{
+	float:none;
 }
 .loginBanner{
 	color: hsla(195, 100%, 50%, 1);
@@ -304,6 +318,7 @@ li{
 	font-size: 70px;
 	font-weight: 200;
 }
+
 
 .login{
 	height: 100vh;
@@ -364,7 +379,6 @@ li{
 }
 input[type=range] {
   -webkit-appearance: none;
-  width: 100%;
   margin: 5.85px 0;
 }
 input[type=range]:focus {
@@ -446,4 +460,19 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: rgba(111, 72, 183, 0.94);
+}
+
+#volume {
+	width: 200px;
+	position: relative;
+	display: inline-flex;
+	bottom: 0;
+	top: 0;
+}
+#controls{
+	display: flex;
+	padding-left: 40%;
+	border-left: 3px solid #9400D3;
+	border-bottom: 3px solid #9400D3;
+	border-right: 3px solid #9400D3;
 }

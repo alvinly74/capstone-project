@@ -65,6 +65,15 @@
       });
       return songlist.reverse();
     },
+    likedSongs:function(){
+      var songlist = [];
+      Object.keys(_songs).forEach(function(id){
+        if (_songs[id].current_user_likes){
+          songlist.push(_songs[id]);
+        }
+      });
+      return songlist;
+    },
     userUploaded: function(userId){
       var result = [];
       Object.keys(_songs).forEach(function(id){

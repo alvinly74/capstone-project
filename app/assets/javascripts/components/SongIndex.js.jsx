@@ -5,10 +5,12 @@ var SongIndex = React.createClass({
 
   componentDidMount: function(){
     SongStore.addSongListChangeListener(this._onChange);
+    UserStore.addChangeListener(this._onChange);
     ApiUtil.fetchAllSongs();
   },
   componentWillUnmount: function(){
     SongStore.removeSongListChangeListener(this._onChange);
+    UserStore.removeChangeListener(this._onChange);
   },
   _onChange: function(){
       this.setState({songs: SongStore.followedUserSongs()});

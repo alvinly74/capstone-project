@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
-    get 'users/rand' => 'users#rand'
-    get 'users/guest' => 'users#guest'
-    get 'users/following' => 'users#following'
+    get 'songs/liking' => 'songs#liking'
     resources :songs, only:[:index, :show, :create] do
       resource :like, only: [:create, :destroy]
     end
+    get 'users/rand' => 'users#rand'
+    get 'users/guest' => 'users#guest'
+    get 'users/following' => 'users#following'
     resources :users, only: [:index, :show ] do
       resource :follow, only: [:create, :destroy]
     end
