@@ -21,6 +21,12 @@ class Api::SongsController < ApplicationController
     @song = Song.find(params[:id])
   end
 
+  def followed_songs
+    @songs = Song.where(user_id: current_user.followees.pluck(:id))
+                 .includes(:likers)
+                 .includes(user: :followers)
+  end
+
   def create
 
   end

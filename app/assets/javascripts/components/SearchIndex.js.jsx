@@ -14,13 +14,13 @@ var SearchIndex = React.createClass({
     if (this.state.songs[0]){
       return this.state.songs.map(function(song){
         return (
-          <div className="SongContainer">
-            <SongItem song={song} key={song.id}/>;
+          <div className="SongContainer" key={song.id}>
+            <SongItem song={song}/>;
           </div>
         );
       });
     } else {
-      return <p>No results. Please try searching again.</p>
+      return <p>No results. Please try searching again.</p>;
     }
   },
 

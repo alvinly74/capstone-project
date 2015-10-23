@@ -17,6 +17,24 @@ ApiUtil = {
       }
     });
   },
+  fetchfollowingSongs: function(){
+    $.ajax({
+      url: "/api/songs/followed",
+      method: "get",
+      success: function(songs){
+        ApiActions.addSongsToStore(songs);
+      }
+    });
+  },
+  fetchSong: function(songId){
+    $.ajax({
+      url:"/api/songs/" + songId,
+      method:"get",
+      success: function(song){
+        ApiActions.addSongsToStore([song]);
+      }
+    });
+  },
   randomNextSong: function(){
     ApiActions.randomNextSong();
   },
@@ -96,20 +114,6 @@ ApiUtil = {
   },
   updateCurrentSong: function(song){
     ApiActions.updateCurrentSong(song);
-  },
-  changeWindowSongId: function(songId){
-    $.ajax({
-      url: "api/songs/"+ songId,
-      method: 'get',
-      data:{id:songId},
-      success: function(song){
-        ApiActions.addSongsToStore([song]);
-        ApiActions.changeWindowSongId(song.id);
-      }
-    });
-  },
-  resetWindowSongId: function(){
-    ApiActions.changeWindowSongId(0);
   },
   searchSongs: function(input){
     $.ajax({

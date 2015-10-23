@@ -1,14 +1,11 @@
 var SearchBar = React.createClass({
   mixins: [ReactRouter.History],
   getInitialState:function(){
-    return {songs: SongStore.all(), input: ""};
+    return {input: ""};
   },
   compontentDidMount:function(){
-    SongStore.addSongListChangeListener(this._onChange);
-    ApiUtil.fetchAllSongs();
   },
   _onChange:function(){
-    this.setState({songs: SongStore.all()});
   },
 
   _handleTyping:function(e){
@@ -17,7 +14,7 @@ var SearchBar = React.createClass({
   _goSearch:function(e){
     e.preventDefault();
     this.history.pushState(null,"search");
-    ApiUtil.searchSongs(this.state.input);
+    ApiUtil.searchSongs(this.state.input.toLowerCase());
     this.setState({input: ""});
   },
   render: function(){

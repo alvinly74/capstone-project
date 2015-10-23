@@ -6,6 +6,9 @@ var FollowIndex = React.createClass({
     UserStore.addChangeListener(this._onChange);
     ApiUtil.fetchFollowingUsers();
   },
+  componentWillUnmount: function(){
+    UserStore.removeChangeListener(this._onChange);
+  },
   _onChange: function(){
     this.setState({users: UserStore.followedUsers()});
     UserStore.removeChangeListener(this._onChange);

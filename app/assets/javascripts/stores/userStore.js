@@ -72,4 +72,5 @@
       }
     })
   });
+  UserStore.setMaxListeners(0);
 })(this);

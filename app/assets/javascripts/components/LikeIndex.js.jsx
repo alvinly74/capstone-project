@@ -7,10 +7,11 @@ var LikeIndex = React.createClass({
     SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchLikedSongs();
   },
-
+  componentWillUnmount: function(){
+    SongStore.removeSongListChangeListener(this._onChange);
+  },
   _onChange: function(){
     this.setState({songs: SongStore.likedSongs()});
-    // SongStore.removeSongListChangeListener(this._onChange);
   },
   render:function(){
     if (this.state.songs) {
@@ -20,8 +21,8 @@ var LikeIndex = React.createClass({
           <ul>
             {this.state.songs.map(function(song){
               return (
-                <div className='SongContainer'>
-                <SongItem song={song} key={song.id} submitted="true"/>
+                <div className='SongContainer' key={song.id}>
+                  <SongItem song={song} submitted="true"/>
                 </div>
               );
             })}

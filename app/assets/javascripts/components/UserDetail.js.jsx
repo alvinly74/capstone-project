@@ -12,6 +12,9 @@ var UserDetail = React.createClass({
     SongStore.removeSongListChangeListener(this._onChange);
   },
   componentWillReceiveProps: function(newProps) {
+    if (!UserStore.find(newProps.params.userId)){
+      ApiUtil.fetchUser(newProps.params.userId);
+    }
     this.setState({current: UserStore.find(newProps.params.userId)});
   },
   _onChange: function(){
@@ -23,8 +26,8 @@ var UserDetail = React.createClass({
     if (this.state.currentSongs){
       return this.state.currentSongs.map(function(song){
         return (
-          <div className="SongContainer">
-            <SongItem song={song} key={song.id}/>;
+          <div className="SongContainer" key={song.id}>
+            <SongItem song={song}/>;
           </div>
         );
       });

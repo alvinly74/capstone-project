@@ -17,12 +17,6 @@ ApiActions = {
       song: song,
     });
   },
-  changeWindowSongId: function(songId){
-    AppDispatcher.dispatch({
-      actionType: SongConstants.WINDOW_SONG_CHANGE,
-      songId:songId
-    });
-  },
   updateSearch: function(songIds){
     AppDispatcher.dispatch({
       actionType: SongConstants.SEARCHING_SONGS,

@@ -1,23 +1,25 @@
 var SongDetail = React.createClass({
   mixins: [ReactRouter.History],
   getInitialState: function(){
-    return {windowSong: SongStore.window()};
+    return {windowSong: SongStore.find(this.props.params.songId)};
   },
   componentDidMount: function(){
-    SongStore.addWindowSongChangeListener(this._onChange);
-    ApiUtil.changeWindowSongId(this.props.params.songId);
+    SongStore.addSongListChangeListener(this._onChange);
+    ApiUtil.fetchSong(this.props.params.songId);
   },
   componentWillUnmount: function(){
-    ApiUtil.resetWindowSongId();
-    SongStore.removeWindowSongChangeListener(this._onChange);
+    SongStore.removeSongListChangeListener(this._onChange);
 
   },
-  componentWillReceiveProps: function(newprops){
-    ApiUtil.changeWindowSongId(newprops.params.songId);
+  componentWillReceiveProps: function(newProps){
+    if (!SongStore.find(newProps.params.songId)){
+      ApiUtil.fetchSong(newProps.params.songId);
+    }
+    this.setState({windowSong: SongStore.find(newProps.params.songId)});
   },
 
   _onChange: function(){
-    this.setState({windowSong: SongStore.window()});
+    this.setState({windowSong: SongStore.find(this.props.params.songId)});
   },
 
   _showUser:function(){

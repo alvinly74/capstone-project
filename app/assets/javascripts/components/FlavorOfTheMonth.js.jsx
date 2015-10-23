@@ -11,6 +11,7 @@ var FlavorOfTheMonth = React.createClass({
   },
   componentWillUnmount: function(){
     UserStore.removeChangeListener(this._onChange);
+    SongStore.removeSongListChangeListener(this._onChange);
     ApiUtil.removeRandomUser();
   },
   _onChange: function(){
@@ -33,8 +34,8 @@ var FlavorOfTheMonth = React.createClass({
     } else {
       return flavorSongs.map(function(song){
         return(
-          <div className="SongContainer">
-            <SongItem song={song} key={song.id}/>;
+          <div className="SongContainer" key={song.id}>
+            <SongItem song={song}/>;
           </div>
         );
       });

@@ -2,12 +2,11 @@
   'use strict';
 
   var _songs = {};
-  var _windowSongId = 0;
   var _currentSong = 0;
   var _searchResults = [];
   var _currentplaying = false;
   var _waveSurfer = Object.create(WaveSurfer);
-  var _waveSurfSong = parseInt(Object.keys(_songs)[0]);
+  var _waveSurfSong = 0;
 
   var LIST_CHANGE = "list change";
   var WINDOW_CHANGE = "SONG SHOW PAGE CHANGE";
@@ -20,10 +19,6 @@
     songs.forEach(function(song){
       _songs[song.id] = song;
     });
-  };
-
-  var changeWindowSongId = function(id){
-    _windowSongId = id;
   };
 
   var updateCurrentSong = function(song){
@@ -44,9 +39,6 @@
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
-    if (song.id === _windowSongId) {
-      SongStore.emit(WINDOW_CHANGE);
-    }
     if (song.id === _currentSong){
       SongStore.emit(UPDATE_CURRENT);
     }
@@ -101,9 +93,6 @@
     all: function(){
       return Object.keys(_songs).map(function(id) { return _songs[id]; });
     },
-    window: function(){
-      return _songs[_windowSongId];
-    },
     current: function(){
       return _songs[_currentSong];
     },
@@ -127,13 +116,6 @@
       this.removeListener(LIST_CHANGE, callback);
     },
 
-    addWindowSongChangeListener: function(callback){
-      this.on(WINDOW_CHANGE, callback);
-    },
-    removeWindowSongChangeListener: function(callback){
-      this.removeListener(WINDOW_CHANGE, callback);
-    },
-
     addCurrentSongChangeListener: function(callback){
       this.on(UPDATE_CURRENT, callback);
     },
@@ -148,35 +130,32 @@
           result = resetSongs(payload.songs);
           SongStore.emit(LIST_CHANGE);
           break;
-        case SongConstants.WINDOW_SONG_CHANGE:
-          result = changeWindowSongId(payload.songId);
-          SongStore.emit(WINDOW_CHANGE);
+        case SongConstants.CURRENT_SONG_CHANGE:
+          result = updateCurrentSong(payload.song);
+          SongStore.emit(UPDATE_CURRENT);
           break;
-          case SongConstants.CURRENT_SONG_CHANGE:
-            result = updateCurrentSong(payload.song);
-            SongStore.emit(UPDATE_CURRENT);
-            break;
-          case SongConstants.SONG_UPDATE:
-            result = updateSong(payload.song);
-            SongStore.emit(LIST_CHANGE);
-            break;
-          case SongConstants.SONG_STATUS_CHANGE:
-            result = updatePlayingStatus(payload.status);
-            SongStore.emit(UPDATE_CURRENT);
-            break;
-          case SongConstants.ADD_SONGS_TO_STORE:
-            result = addSongsToStore(payload.songs);
-            SongStore.emit(LIST_CHANGE);
-            break;
-          case SongConstants.SEARCHING_SONGS:
-            result = updateSearch(payload.songIds);
-            SongStore.emit(LIST_CHANGE);
-            break;
-          case SongConstants.NEXT_SONG_PLAY:
-            result = randomSongPlay();
-            SongStore.emit(LIST_CHANGE);
-            break;
+        case SongConstants.SONG_UPDATE:
+          result = updateSong(payload.song);
+          SongStore.emit(LIST_CHANGE);
+          break;
+        case SongConstants.SONG_STATUS_CHANGE:
+          result = updatePlayingStatus(payload.status);
+          SongStore.emit(UPDATE_CURRENT);
+          break;
+        case SongConstants.ADD_SONGS_TO_STORE:
+          result = addSongsToStore(payload.songs);
+          SongStore.emit(LIST_CHANGE);
+          break;
+        case SongConstants.SEARCHING_SONGS:
+          result = updateSearch(payload.songIds);
+          SongStore.emit(LIST_CHANGE);
+          break;
+        case SongConstants.NEXT_SONG_PLAY:
+          result = randomSongPlay();
+          SongStore.emit(LIST_CHANGE);
+          break;
       }
     })
   });
+  SongStore.setMaxListeners(0);
 })(this);
