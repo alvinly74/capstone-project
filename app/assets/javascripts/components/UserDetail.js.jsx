@@ -4,18 +4,15 @@ var UserDetail = React.createClass({
   },
   componentDidMount: function(){
     UserStore.addChangeListener(this._onChange);
-    SongStore.addSongListChangeListener(this._onChange);
     ApiUtil.fetchUser(this.props.params.userId);
   },
   componentWillUnmount: function(){
     UserStore.removeChangeListener(this._onChange);
-    SongStore.removeSongListChangeListener(this._onChange);
   },
   componentWillReceiveProps: function(newProps) {
-    if (!UserStore.find(newProps.params.userId)){
       ApiUtil.fetchUser(newProps.params.userId);
-    }
-    this.setState({current: UserStore.find(newProps.params.userId)});
+    this.setState({current: UserStore.find(newProps.params.userId),
+                   currentSongs: SongStore.userUploaded(newProps.params.userId)});
   },
   _onChange: function(){
     this.setState({current: UserStore.find(this.props.params.userId),

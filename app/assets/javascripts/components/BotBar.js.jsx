@@ -80,8 +80,7 @@ var BotBar = React.createClass({
     }
   },
   goResume:function(){
-    debugger;
-    window.location.replace("http://www.youtube.com/");
+    window.location.replace("https://www.linkedin.com/pub/alvin-ly/90/bb8/a14");
   },
   render: function(){
     return(

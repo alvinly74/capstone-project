@@ -1,9 +1,9 @@
 class Api::SongsController < ApplicationController
 
   def search
-    @song_ids = Song.includes(user: :followers)
+    @songs = Song.includes(user: :followers)
                  .includes(:likers)
-                 .where("lower(title) ~ ?", params[:input]).pluck(:id).uniq
+                 .where("lower(title) ~ ?", params[:input]).uniq
   end
 
   def liking

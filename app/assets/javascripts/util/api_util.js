@@ -120,8 +120,11 @@ ApiUtil = {
       url: 'api/songs/search',
       method: 'get',
       data: {input: input},
-      success: function(songIds){
-        ApiActions.updateSearch(songIds);
+      success: function(songs){
+        ApiActions.addSongsToStore(songs);
+        ApiActions.updateSearch(songs.map(function(song){
+          return song.id;
+        }));
       }
     });
   },

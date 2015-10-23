@@ -25,7 +25,6 @@ var SearchIndex = React.createClass({
   },
 
   render: function(){
-    // debugger;
     return (
       <div className="under">
         <h1>Search Results:</h1>
