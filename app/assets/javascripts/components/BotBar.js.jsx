@@ -78,6 +78,10 @@ var BotBar = React.createClass({
       return <PlayPause song={this.state.waveSurfSong}/>;
     }
   },
+  goResume:function(){
+    debugger;
+    window.location.replace("http://www.youtube.com/");
+  },
   render: function(){
     return(
       <div className="BotBar">
@@ -92,7 +96,7 @@ var BotBar = React.createClass({
         <div className="BotBarRight">
           {this._nowPlaying()}
           <p className="SocialMedia">
-            FB and resume icons and junk go here
+            <a onClick={this.goResume}>[PH button to resume]</a>
           </p>
         </div>
       </div>

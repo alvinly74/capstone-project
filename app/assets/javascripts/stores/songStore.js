@@ -4,6 +4,7 @@
   var _songs = {};
   var _windowSongId = 0;
   var _currentSong = 0;
+  var _searchResults = [];
   var _currentplaying = false;
   var _waveSurfer = Object.create(WaveSurfer);
   var _waveSurfSong = parseInt(Object.keys(_songs)[0]);
@@ -31,7 +32,9 @@
     }
     _currentSong = song.id;
   };
-
+  var updateSearch = function(songIds){
+    _searchResults = songIds;
+  };
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
@@ -54,33 +57,40 @@
 
   var SongStore = root.SongStore = $.extend({}, EventEmitter.prototype, {
 
+    searchResult: function(){
+      var songList = [];
+      _searchResults.forEach(function(id){
+        songList.push(_songs[id]);
+      });
+      return songList;
+    },
     followedUserSongs:function(){
-      var songlist = [];
+      var songList = [];
       var limitOne = [];
       Object.keys(_songs).forEach(function(id){
         if (_songs[id].current_user_follow && limitOne.indexOf(_songs[id].user_id) === -1){
-          songlist.push(_songs[id]);
+          songList.push(_songs[id]);
           limitOne.push(_songs[id].user_id);
         }
       });
-      return songlist.reverse();
+      return songList.reverse();
     },
     likedSongs:function(){
-      var songlist = [];
+      var songList = [];
       Object.keys(_songs).forEach(function(id){
         if (_songs[id].current_user_likes){
-          songlist.push(_songs[id]);
+          songList.push(_songs[id]);
         }
       });
-      return songlist;
+      return songList;
     },
     userUploaded: function(userId){
-      var result = [];
+      var songList = [];
       Object.keys(_songs).forEach(function(id){
         if (_songs[id].user_id === parseInt(userId))
-        result.push(_songs[id]);
+        songList.push(_songs[id]);
       });
-      return result;
+      return songList;
     },
     all: function(){
       return Object.keys(_songs).map(function(id) { return _songs[id]; });
@@ -150,6 +160,10 @@
             break;
           case SongConstants.ADD_SONGS_TO_STORE:
             result = addSongsToStore(payload.songs);
+            SongStore.emit(LIST_CHANGE);
+            break;
+          case SongConstants.SEARCHING_SONGS:
+            result = updateSearch(payload.songIds);
             SongStore.emit(LIST_CHANGE);
       }
     })

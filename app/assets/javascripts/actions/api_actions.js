@@ -23,6 +23,12 @@ ApiActions = {
       songId:songId
     });
   },
+  updateSearch: function(songIds){
+    AppDispatcher.dispatch({
+      actionType: SongConstants.SEARCHING_SONGS,
+      songIds:songIds
+    });
+  },
   addRandomUser: function(user){
     AppDispatcher.dispatch({
       actionType: UserConstants.RANDOM_USER,

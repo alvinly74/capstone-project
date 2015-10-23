@@ -26,7 +26,7 @@ var SongDetail = React.createClass({
     if(this.state.windowSong.user_name){
       return(
         <div>
-          <img className="image Left" onClick={this._showUser} src={this.state.windowSong.user_img} alt="songIcon" height="200" width="200"/>
+          <img className="image hoverable Left" onClick={this._showUser} src={this.state.windowSong.user_img} alt="songIcon" height="200" width="200"/>
           <h2>By: <a onClick={this._showUser}>{this.state.windowSong.user_name}</a></h2>;
         </div>
       );

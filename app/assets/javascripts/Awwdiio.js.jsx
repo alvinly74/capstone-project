@@ -23,6 +23,7 @@
       <Route path="users/:userId" component={UserDetail}/>
       <Route path="following" component={FollowIndex}/>
       <Route path="liking" component={LikeIndex}/>
+      <Route path="Search" component={SearchIndex}/>
     </Route>
   );
     React.render(<Router>{routes}</Router>, root);

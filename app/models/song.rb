@@ -19,16 +19,4 @@ class Song < ActiveRecord::Base
     through: :likers_model,
     source: :liker
   )
-
-  def self.followed_songs(user)
-    if user
-      user.followee_songs
-    else
-      nil
-    end
-  end
-
-  def self.uploaded_songs
-
-  end
 end

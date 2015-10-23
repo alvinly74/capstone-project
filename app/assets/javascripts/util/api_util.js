@@ -103,6 +103,17 @@ ApiUtil = {
     });
   },
 
+  searchSongs: function(input){
+    $.ajax({
+      url: 'api/songs/search',
+      method: 'get',
+      data: {input: input},
+      success: function(songIds){
+        ApiActions.updateSearch(songIds);
+      }
+    });
+  },
+
   LogOut: function(){
     $.ajax({
       url:"/session",

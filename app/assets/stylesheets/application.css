@@ -291,7 +291,7 @@ li{
 	float: right;
 }
 
-.image:hover{
+.hoverable:hover{
 	cursor:pointer;
 	border: 3px inset lime;
 	opacity:.7;

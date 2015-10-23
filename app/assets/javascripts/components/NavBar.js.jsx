@@ -79,6 +79,7 @@
             {this._showUsername()}
             <li onClick={this.goFollowing}>Manage Following</li>
             <li onClick={this.goLiking}>Manage Likes</li>
+            <li><SearchBar/></li>
         </ul>
             {this.state.logOutOrIn}
         </nav>

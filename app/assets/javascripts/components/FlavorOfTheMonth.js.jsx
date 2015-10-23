@@ -21,7 +21,6 @@ var FlavorOfTheMonth = React.createClass({
     this.history.pushState(null,"users/" + this.state.user.id);
   },
   _flavorSongs: function(){
-    // debugger;
       if (Object.keys(this.state.songs).length < 2) {
         return <div/>;
       } else {
@@ -38,7 +37,7 @@ var FlavorOfTheMonth = React.createClass({
       return(
         <div className="Flavor">
           <div className="FlavorUser">
-            <img className="image" onClick={this._showUser} src={this.state.user.img_url} alt="avatar" height="300" width="300"/>
+            <img className="image hoverable" onClick={this._showUser} src={this.state.user.img_url} alt="avatar" height="300" width="300"/>
             <a onClick={this._showUser}>{this.state.user.username}</a>
           </div>
           {this._flavorSongs()}

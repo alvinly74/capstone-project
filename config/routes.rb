@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     get 'songs/liking' => 'songs#liking'
+    get 'songs/search' => 'songs#search'
     resources :songs, only:[:index, :show, :create] do
       resource :like, only: [:create, :destroy]
     end
