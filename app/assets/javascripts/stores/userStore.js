@@ -14,7 +14,9 @@
     _users[user.id] = user;
     _randomUser = user.id;
   };
-
+  var removeRandomUser = function(){
+    _randomUser = 0;
+  };
   var updateUserFollow = function(user){
     delete _users[user.id];
     _users[user.id] = user;
@@ -61,6 +63,10 @@
           break;
         case UserConstants.RANDOM_USER:
           result = addRandomUser(payload.user);
+          UserStore.emit(USER_CHANGE);
+          break;
+        case UserConstants.REMOVE_RANDOM_USER:
+          result = removeRandomUser();
           UserStore.emit(USER_CHANGE);
           break;
       }

@@ -35,6 +35,11 @@ ApiActions = {
       user: user
     });
   },
+  removeRandomUser: function(){
+    AppDispatcher.dispatch({
+      actionType: UserConstants.REMOVE_RANDOM_USER,
+    });
+  },
   addUsersToStore: function(users){
     AppDispatcher.dispatch({
       actionType: UserConstants.USERS_RECEIVED,
@@ -45,6 +50,11 @@ ApiActions = {
     AppDispatcher.dispatch({
       actionType: SongConstants.SONG_STATUS_CHANGE,
       status:status
+    });
+  },
+  randomNextSong: function(){
+    AppDispatcher.dispatch({
+      actionType:SongConstants.NEXT_SONG_PLAY
     });
   },
   updateCurrentSong: function(song){

@@ -11,6 +11,7 @@ var FlavorOfTheMonth = React.createClass({
   },
   componentWillUnmount: function(){
     UserStore.removeChangeListener(this._onChange);
+    ApiUtil.removeRandomUser();
   },
   _onChange: function(){
     if (UserStore.flavorUser()){
@@ -21,16 +22,23 @@ var FlavorOfTheMonth = React.createClass({
     this.history.pushState(null,"users/" + this.state.user.id);
   },
   _flavorSongs: function(){
-      if (Object.keys(this.state.songs).length < 2) {
-        return <div/>;
-      } else {
-        return (
-          <div className="FlavorSongs">
-            <SongItem song={this.state.songs[0]} key ={this.state.songs[0].id}/>
-            <SongItem song={this.state.songs[1]} key ={this.state.songs[1].id}/>
+    var idx = 0;
+    var flavorSongs = [];
+    while (idx < 4 && idx < this.state.songs.length){
+      flavorSongs.push(this.state.songs[idx]);
+      idx +=1;
+    }
+    if (flavorSongs.length === 0) {
+      return <div/>;
+    } else {
+      return flavorSongs.map(function(song){
+        return(
+          <div className="SongContainer">
+            <SongItem song={song} key={song.id}/>;
           </div>
         );
-      }
+      });
+    }
   },
   render:function(){
     if (this.state.user){
@@ -38,9 +46,11 @@ var FlavorOfTheMonth = React.createClass({
         <div className="Flavor">
           <div className="FlavorUser">
             <img className="image hoverable" onClick={this._showUser} src={this.state.user.img_url} alt="avatar" height="300" width="300"/>
-            <a onClick={this._showUser}>{this.state.user.username}</a>
+            <a id="FlavorName" onClick={this._showUser}>{this.state.user.username}</a>
           </div>
+          <div className="FlavorSongs">
           {this._flavorSongs()}
+          </div>
           <a onClick={this._showUser}>More from {this.state.user.username}...</a>
         </div>
       );

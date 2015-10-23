@@ -121,13 +121,12 @@ li{
 	height: 50px;
 }
 .NavBar li{
-	display: inline-block;
-	padding: 4px;
 	height: 100%;
 	border-right: 3px solid #8C0D0D;
 	display: inline-block;
 	padding: 13px;
 }
+
 .NavBar li:hover{
 	cursor: pointer;
 	color: lime;
@@ -138,7 +137,18 @@ li{
 	height: 100%;
 	width: 80%;
 }
-
+#Search{
+	border-left: 3px solid #8C0D0D;
+	border-right: 0;
+	padding: 11px;
+	float:right;
+}
+.searchbutton{
+	margin-left:10px;
+}
+.SearchBar{
+	color:black;
+}
 .NavBarRight{
 	width: 20%;
   height: 100%;
@@ -146,9 +156,6 @@ li{
   border-bottom: 3px solid #8C0D0D;
   float: right;
   list-style: none;
-}
-.NavBarRight > li{
-  float:left;
 }
 
 .SongIndex{
@@ -227,12 +234,20 @@ li{
 	overflow-y: auto;
 	top: 50px;
 }
-.FlavorSongs{
-	width: 40%;
+.Flavor{
+	margin-left: 7%;
+	width: calc(93% - 200px);
 }
-
+.FlavorSongs{
+	overflow-y: auto;
+	width: auto;
+	bottom: 128px;
+}
+#FlavorName{
+	font-size: 50px;
+}
 .Flavor a{
-	font-size:32px;
+	font-size: 32px;
 }
 .userDetail{
 	display: inline-block;
@@ -242,6 +257,9 @@ li{
 }
 .userDetailRight{
 	width: calc(100% - 410px);
+}
+.SongDetail{
+	width: 73%;
 }
 .UserList{
 	float:left;
@@ -296,6 +314,7 @@ li{
 	border: 3px inset lime;
 	opacity:.7;
 }
+
 .Left{
 	float:left;
 }
@@ -377,6 +396,7 @@ li{
 	text-shadow: 1px 1px 3px deepskyblue;
 	font-size: 18px;
 }
+
 input[type=range] {
   -webkit-appearance: none;
   margin: 5.85px 0;

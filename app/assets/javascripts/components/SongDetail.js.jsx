@@ -8,7 +8,9 @@ var SongDetail = React.createClass({
     ApiUtil.changeWindowSongId(this.props.params.songId);
   },
   componentWillUnmount: function(){
+    ApiUtil.resetWindowSongId();
     SongStore.removeWindowSongChangeListener(this._onChange);
+
   },
   componentWillReceiveProps: function(newprops){
     ApiUtil.changeWindowSongId(newprops.params.songId);
@@ -22,7 +24,6 @@ var SongDetail = React.createClass({
     this.history.pushState(null,"users/" + this.state.windowSong.user_id);
   },
   _username: function(){
-    // debugger;
     if(this.state.windowSong.user_name){
       return(
         <div>
@@ -37,8 +38,8 @@ var SongDetail = React.createClass({
   render:function(){
     if(this.state.windowSong){
       return(
-        <div className="under">
-          <div className="SongTop">
+        <div className="SongDetail under">
+          <div>
             <img className="image" src={this.state.windowSong.img_url} alt="songIcon" height="400" width="400"/>
             <h1>{this.state.windowSong.title}</h1>
             {this._username()}

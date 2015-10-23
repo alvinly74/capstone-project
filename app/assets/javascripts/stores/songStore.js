@@ -35,6 +35,12 @@
   var updateSearch = function(songIds){
     _searchResults = songIds;
   };
+  var randomSongPlay = function(){
+    var song = _songs[Math.floor(Math.random()*Object.keys(_songs).length)];
+    updatePlayingStatus(true);
+    updateCurrentSong(song);
+    SongStore.emit(UPDATE_CURRENT);
+  };
   var updateSong = function(song){
     delete _songs[song.id];
     _songs[song.id] = song;
@@ -165,6 +171,11 @@
           case SongConstants.SEARCHING_SONGS:
             result = updateSearch(payload.songIds);
             SongStore.emit(LIST_CHANGE);
+            break;
+          case SongConstants.NEXT_SONG_PLAY:
+            result = randomSongPlay();
+            SongStore.emit(LIST_CHANGE);
+            break;
       }
     })
   });

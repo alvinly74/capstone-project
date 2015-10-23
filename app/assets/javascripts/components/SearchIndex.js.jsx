@@ -8,7 +8,6 @@ var SearchIndex = React.createClass({
   },
 
   _onChange: function(){
-    // debugger;
     this.setState({songs:SongStore.searchResult()});
   },
   _songs: function(){
@@ -20,6 +19,8 @@ var SearchIndex = React.createClass({
           </div>
         );
       });
+    } else {
+      return <p>No results. Please try searching again.</p>
     }
   },
 
@@ -27,7 +28,7 @@ var SearchIndex = React.createClass({
     // debugger;
     return (
       <div className="under">
-        <p>yehboi</p>
+        <h1>Search Results:</h1>
         <ul>
           {this._songs()}
         </ul>

@@ -20,6 +20,7 @@ var BotBar = React.createClass({
     this.state.waveSurfer.load("");
     this.state.waveSurfer.on("finish", function(){
       ApiUtil.updatePlayingStatus(false);
+      ApiUtil.randomNextSong();
     });
   },
 

@@ -65,21 +65,37 @@
     goLiking: function(){
       this.history.pushState(null,"/liking");
     },
-
+    _showDiscover: function(){
+      if (window.CURRENT_USERNAME){
+        return <li onClick={this.goHome}>Discover a Fellow User</li>;
+      } else {
+        return <li onClick={this.goHome}>Discover a User</li>;
+      }
+    },
     _showUsername: function(){
       if (window.CURRENT_USERNAME){
         return <li onClick={this.userShow}>{window.CURRENT_USERNAME}</li>;
+      }
+    },
+    _showFollowing: function(){
+      if (window.CURRENT_USERNAME){
+        return <li onClick={this.goFollowing}>Manage Following</li>;
+      }
+    },
+    _showLiking: function(){
+      if (window.CURRENT_USERNAME){
+        return <li onClick={this.goLiking}>Manage Likes</li>;
       }
     },
     render: function(){
       return(
         <nav className="NavBar group">
           <ul className="NavBarLeft Left">
-            <li onClick={this.goHome}>Discover a Fellow User</li>
+            {this._showDiscover()}
             {this._showUsername()}
-            <li onClick={this.goFollowing}>Manage Following</li>
-            <li onClick={this.goLiking}>Manage Likes</li>
-            <li><SearchBar/></li>
+            {this._showFollowing()}
+            {this._showLiking()}
+            <li id="Search"><SearchBar/></li>
         </ul>
             {this.state.logOutOrIn}
         </nav>

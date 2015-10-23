@@ -17,6 +17,9 @@ ApiUtil = {
       }
     });
   },
+  randomNextSong: function(){
+    ApiActions.randomNextSong();
+  },
   updateSongLike:function(song, likeUnlike){
     var status;
     if (likeUnlike ===1){
@@ -57,6 +60,9 @@ ApiUtil = {
         ApiActions.addRandomUser(response);
       }
     });
+  },
+  removeRandomUser: function(){
+    ApiActions.removeRandomUser();
   },
   fetchUser: function(userId){
     $.ajax({
@@ -102,7 +108,9 @@ ApiUtil = {
       }
     });
   },
-
+  resetWindowSongId: function(){
+    ApiActions.changeWindowSongId(0);
+  },
   searchSongs: function(input){
     $.ajax({
       url: 'api/songs/search',
