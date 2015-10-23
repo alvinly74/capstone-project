@@ -26,6 +26,10 @@ var FollowUnfollow = React.createClass({
   },
 
   _determineButton: function(){
+    if (this.state.user.id === window.CURRENT_USER_ID) {
+      return;
+    }
+
     if (this.state.user.current_user_follow){
       return <button className="Botton" onClick={this._unfollowUser}>Unfollow</button>;
     } else {
