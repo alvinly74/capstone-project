@@ -22,9 +22,14 @@ class Api::SongsController < ApplicationController
   end
 
   def followed_songs
-    @songs = Song.where(user_id: current_user.followees.pluck(:id))
-                 .includes(:likers)
-                 .includes(user: :followers)
+    if current_user
+      @songs = Song.where(user_id: current_user.followees.pluck(:id))
+                   .includes(:likers)
+                   .includes(user: :followers)
+    else
+      @songs = nil
+      render :no_follow
+    end
   end
 
   def create

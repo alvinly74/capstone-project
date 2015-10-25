@@ -22,7 +22,9 @@ ApiUtil = {
       url: "/api/songs/followed",
       method: "get",
       success: function(songs){
+        if (songs[0]) {
         ApiActions.addSongsToStore(songs);
+        }
       }
     });
   },

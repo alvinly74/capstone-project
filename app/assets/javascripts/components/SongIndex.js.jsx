@@ -36,7 +36,7 @@ var SongIndex = React.createClass({
   render:function(){
     return(
       <div className="SongIndex">
-        <p>Songs by Folks you Followed</p>
+        <p>Recently uploaded by those you're Following:</p>
         <ul>
           {this._feed()}
         </ul>

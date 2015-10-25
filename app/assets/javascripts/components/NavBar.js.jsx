@@ -91,6 +91,7 @@
       return(
         <nav className="NavBar group">
           <ul className="NavBarLeft Left">
+            <li onClick={this.goHome}>AwWDI</li>
             {this._showDiscover()}
             {this._showUsername()}
             {this._showFollowing()}
