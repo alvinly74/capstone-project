@@ -6,8 +6,20 @@ var BotBar = React.createClass({
 
   componentDidMount: function(){
     SongStore.addCurrentSongChangeListener(this._onChange);
-    if(SongStore.playing() === true){
-      this.state.waveSurfer.play();
+    if (this.state.waveSurfSong && SongStore.playing() === true){
+      duration = this.state.waveSurfer.getCurrentTime();
+      this.state.waveSurfer.init({
+          container: document.querySelector('#wave'),
+          waveColor: 'deeppink',
+          progressColor: 'deepskyblue',
+          cursorColor: "orange",
+          backend: 'MediaElement',
+          cursorWidth: 3,
+          barWidth: 3,
+          height: 91
+      });
+      this.state.waveSurfer.load(this.state.waveSurfSong.url);
+      this.state.waveSurfer.play(duration);
     }
     if (!this.state.waveSurfSong){
       this.state.waveSurfer.init({
