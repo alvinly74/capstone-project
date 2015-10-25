@@ -31,7 +31,9 @@
     _searchResults = songIds;
   };
   var randomSongPlay = function(){
-    var song = _songs[Math.floor(Math.random()*Object.keys(_songs).length)];
+    var a = Math.floor(Math.random()*Object.keys(_songs).length);
+    console.log(a);
+    var song = _songs[a];
     updatePlayingStatus(true);
     updateCurrentSong(song);
     SongStore.emit(UPDATE_CURRENT);

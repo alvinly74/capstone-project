@@ -32,7 +32,7 @@ class Api::SongsController < ApplicationController
     end
   end
 
-  def create
-
+  def random
+    @song = Song.includes(user: :followers).includes(:likers).sample
   end
 end

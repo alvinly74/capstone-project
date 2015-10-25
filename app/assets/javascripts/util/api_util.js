@@ -38,7 +38,14 @@ ApiUtil = {
     });
   },
   randomNextSong: function(){
-    ApiActions.randomNextSong();
+    $.ajax({
+      url:'/api/songs/random',
+      method: 'get',
+      success:function(song){
+        ApiActions.addSongsToStore([song]);
+        ApiUtil.updateCurrentSong(song);
+      }
+    });
   },
   updateSongLike:function(song, likeUnlike){
     var status;

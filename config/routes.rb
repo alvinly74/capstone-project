@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get 'songs/liking' => 'songs#liking'
     get 'songs/search' => 'songs#search'
     get 'songs/followed' => 'songs#followed_songs'
+    get 'songs/random' => 'songs#random'
     resources :songs, only:[:index, :show, :create] do
       resource :like, only: [:create, :destroy]
     end
