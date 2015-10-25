@@ -6,8 +6,10 @@ var BotBar = React.createClass({
 
   componentDidMount: function(){
     SongStore.addCurrentSongChangeListener(this._onChange);
-    if (this.state.waveSurfSong && SongStore.playing() === true){
-      duration = this.state.waveSurfer.getCurrentTime();
+
+    if (SongStore.playing()){
+        // this.state.waveSurfer.play();
+    } else {
       this.state.waveSurfer.init({
           container: document.querySelector('#wave'),
           waveColor: 'deeppink',
@@ -18,20 +20,7 @@ var BotBar = React.createClass({
           barWidth: 3,
           height: 91
       });
-      this.state.waveSurfer.load(this.state.waveSurfSong.url);
-      this.state.waveSurfer.play(duration);
-    }
-    if (!this.state.waveSurfSong){
-      this.state.waveSurfer.init({
-          container: document.querySelector('#wave'),
-          waveColor: 'deeppink',
-          progressColor: 'deepskyblue',
-          cursorColor: "orange",
-          backend: 'MediaElement',
-          cursorWidth: 3,
-          barWidth: 3,
-          height: 91
-      });
+
       this.state.waveSurfer.on("finish", function(){
         ApiUtil.updatePlayingStatus(false);
         ApiUtil.randomNextSong();
@@ -54,11 +43,6 @@ var BotBar = React.createClass({
     }
   },
 
-  componentDidUpdate: function () {
-    if(SongStore.playing() === true){
-      this.state.waveSurfer.play();
-    }
-  },
 
   _showUser: function(){
     this.history.pushState(null,"users/" + this.state.waveSurfSong.user_id);
@@ -99,7 +83,7 @@ var BotBar = React.createClass({
   },
   render: function(){
     return(
-      <div className="BotBar">
+      <footer className="BotBar" key="BotBar">
         <div className="AudioPlayer">
           <div id="wave"/>
           <div id="controls">
@@ -114,7 +98,7 @@ var BotBar = React.createClass({
             <a onClick={this.goResume}>[PH button to resume]</a>
           </p>
         </div>
-      </div>
+      </footer>
     );
   }
 });

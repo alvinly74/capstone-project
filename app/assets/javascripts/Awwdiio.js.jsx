@@ -1,4 +1,5 @@
-  window.createRouter = function () {
+$(function () {
+
   var root = document.getElementById('content');
   var RouteHandler = ReactRouter.RouteHandler;
   var Router = ReactRouter.Router;
@@ -10,7 +11,9 @@
         <div className="Wandow group">
           <NavBar/>
           <SongIndex/>
-          {this.props.children}
+          <div>
+            {this.props.children}
+          </div>
           <BotBar/>
         </div>
       );
@@ -27,4 +30,5 @@
     </Route>
   );
     React.render(<Router>{routes}</Router>, root);
-};
+
+});
