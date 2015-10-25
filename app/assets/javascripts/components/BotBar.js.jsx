@@ -6,22 +6,25 @@ var BotBar = React.createClass({
 
   componentDidMount: function(){
     SongStore.addCurrentSongChangeListener(this._onChange);
-
-    this.state.waveSurfer.init({
-        container: document.querySelector('#wave'),
-        waveColor: 'deeppink',
-        progressColor: 'deepskyblue',
-        cursorColor: "orange",
-        backend: 'MediaElement',
-        cursorWidth: 3,
-        barWidth: 3,
-        height: 91
-    });
-    this.state.waveSurfer.load("");
-    this.state.waveSurfer.on("finish", function(){
-      ApiUtil.updatePlayingStatus(false);
-      ApiUtil.randomNextSong();
-    });
+    if(SongStore.playing() === true){
+      this.state.waveSurfer.play();
+    }
+    if (!this.state.waveSurfSong){
+      this.state.waveSurfer.init({
+          container: document.querySelector('#wave'),
+          waveColor: 'deeppink',
+          progressColor: 'deepskyblue',
+          cursorColor: "orange",
+          backend: 'MediaElement',
+          cursorWidth: 3,
+          barWidth: 3,
+          height: 91
+      });
+      this.state.waveSurfer.on("finish", function(){
+        ApiUtil.updatePlayingStatus(false);
+        ApiUtil.randomNextSong();
+      });
+    }
   },
 
   _onChange:function(){
