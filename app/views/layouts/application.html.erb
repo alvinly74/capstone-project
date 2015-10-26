@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= favicon_link_tag 'favicon.ico' %>
   <title>AwWDI</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='https://fonts.googleapis.com/css?family=Alegreya+SC:900italic' rel='stylesheet' type='text/css'>
@@ -9,6 +10,7 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript" src="http://widget.cloudinary.com/global/all.js"></script>
 </head>
+
 <body>
   <% if current_user %>
   <script type="text/javascript">

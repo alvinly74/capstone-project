@@ -95,7 +95,7 @@ var BotBar = React.createClass({
         <div className="BotBarRight">
           {this._nowPlaying()}
           <p className="SocialMedia">
-            <a onClick={this.goResume}>[PH button to resume]</a>
+            <a onClick={this.goResume}>LinkedIn</a>
           </p>
         </div>
       </footer>
