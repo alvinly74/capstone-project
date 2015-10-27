@@ -193,7 +193,9 @@ li{
 .SongItem:hover{
 	background-color: rgba(112,78,173,0.2);
 }
-
+.SongItemTitle{
+	overflow:hidden;
+}
 .BotBar{
 	border-top: rgb(140, 13, 13) 3px solid;
   background-color: #1A1A1A;
