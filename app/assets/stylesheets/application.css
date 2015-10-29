@@ -330,7 +330,7 @@ li{
 	text-align: center;
 	top: 20%;
 	background-color: rgba(255,255,255,0.30);
-	width: 15%;
+	width: 320px;
 	padding: 20px;
 	border-top-right-radius: 75px;
 	border-top-left-radius: 25px;
@@ -339,6 +339,7 @@ li{
 	margin: auto;
 	font-size: 70px;
 	font-weight: 200;
+	padding-right: 50px;
 }
 
 

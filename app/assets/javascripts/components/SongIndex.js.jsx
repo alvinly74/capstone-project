@@ -1,4 +1,5 @@
 var SongIndex = React.createClass({
+    mixins: [ReactRouter.History],
   getInitialState: function(){
     return {songs: SongStore.followedUserSongs()};
   },
@@ -15,14 +16,16 @@ var SongIndex = React.createClass({
   _onChange: function(){
       this.setState({songs: SongStore.followedUserSongs()});
   },
-
+  goLogin: function(){
+    window.location = "session/new";
+  },
   _feed: function(){
     if(this.state.songs.length === 0) {
       return(
         <div>
       <h1>It looks like you haven't</h1>
       <h1>followed anyone</h1>
-      <a>Log in to start your follower feed!</a>
+      <a onClick={this.goLogin}>Log in to start your follower feed!</a>
         </div>
       );
     } else {
