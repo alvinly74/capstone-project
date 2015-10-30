@@ -18,7 +18,7 @@ var BotBar = React.createClass({
           backend: 'MediaElement',
           cursorWidth: 3,
           barWidth: 3,
-          height: 91
+          height: 94
       });
 
       this.state.waveSurfer.on("finish", function(){
