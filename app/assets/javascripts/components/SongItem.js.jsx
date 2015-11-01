@@ -25,7 +25,7 @@ var SongItem = React.createClass({
 
   render: function(){
       return (
-        <li className="SongItem">
+        <li className="SongItem group">
           <img className="image hoverable" onClick={this.showSong} src={this.props.song.img_url} alt="songIcon" height="100" width="100"/>
           {this._title()}
           {this._submitted()}
