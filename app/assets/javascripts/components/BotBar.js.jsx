@@ -79,7 +79,10 @@ var BotBar = React.createClass({
     }
   },
   goResume:function(){
-    window.location.replace("https://www.linkedin.com/pub/alvin-ly/90/bb8/a14");
+    window.location.replace("https://www.linkedin.com/");
+  },
+  goPortfolio:function(){
+    window.location.replace("https://www.alvinly.com/");
   },
   render: function(){
     return(
@@ -95,7 +98,7 @@ var BotBar = React.createClass({
         <div className="BotBarRight">
           {this._nowPlaying()}
           <p className="SocialMedia">
-            <a onClick={this.goResume}>LinkedIn</a>
+            <a onClick={this.goResume}>LinkedIn</a>  <a onClick={this.goPortfolio}>Portfolio</a>
           </p>
         </div>
       </footer>
